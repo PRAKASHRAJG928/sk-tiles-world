@@ -1,0 +1,2246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SKAVI TILES WORLD — Authorized Dealer of KAG Tiles. Premium floor, wall, bathroom, kitchen, outdoor & elevation tiles in Ettayapuram, Tamil Nadu.">
+<title>SKAVI TILES WORLD — Authorized Dealer of KAG Tiles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════════ */
+:root{
+  --blue:#2872A1;--blue-deep:#1A4F75;--blue-mist:#CBDDE9;
+  --warm-white:#F8F6F2;--stone:#C4B9AA;--charcoal:#1A1A1A;
+  --mid:#2A2A2A;--muted:#6B6B6B;--wood:#7A5C2E;
+  --font-d:'Cormorant Garamond',Georgia,serif;
+  --font-b:'Inter',system-ui,sans-serif;
+  --r:20px;--rs:10px;
+  --ease:cubic-bezier(.25,.46,.45,.94);
+  --t:.45s var(--ease);--tf:.28s ease;
+  --nh:72px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-b);background:var(--charcoal);color:var(--warm-white);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;background:none;font-family:var(--font-b)}
+input,select,textarea{font-family:var(--font-b)}
+::selection{background:var(--blue);color:#fff}
+
+/* ═══════════════════════════════════════════
+   UTILS
+═══════════════════════════════════════════ */
+.wrap{width:100%;max-width:1400px;margin:0 auto;padding:0 48px}
+@media(max-width:768px){.wrap{padding:0 20px}}
+
+.eyebrow{display:flex;align-items:center;gap:9px;font-size:10.5px;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0}
+.eyebrow--light{color:rgba(255,255,255,.45)}
+.eyebrow--light::before{background:var(--blue)}
+
+.headline{font-family:var(--font-d);font-weight:300;
+  font-size:clamp(38px,6vw,82px);line-height:.97;letter-spacing:-.025em}
+
+.btn-p{display:inline-flex;align-items:center;gap:10px;padding:14px 30px;
+  background:var(--blue);color:#fff;font-size:11px;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;border-radius:100px;transition:var(--tf)}
+.btn-p:hover{background:var(--blue-deep);transform:translateY(-1px)}
+
+.btn-o{display:inline-flex;align-items:center;gap:10px;padding:13px 30px;
+  border:1px solid rgba(255,255,255,.32);color:#fff;font-size:11px;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;border-radius:100px;transition:var(--tf)}
+.btn-o:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+
+.btn-do{display:inline-flex;align-items:center;gap:10px;padding:13px 28px;
+  border:1px solid rgba(0,0,0,.18);color:var(--charcoal);font-size:11px;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;border-radius:100px;
+  background:transparent;transition:var(--tf)}
+.btn-do:hover{background:var(--charcoal);color:#fff;border-color:var(--charcoal)}
+
+/* Scroll reveal — only a single fade-up, not on every card */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.12s}.rv-d2{transition-delay:.24s}.rv-d3{transition-delay:.36s}
+
+/* Toast */
+.toast{position:fixed;bottom:108px;right:32px;padding:13px 20px;
+  background:var(--charcoal);color:#fff;font-size:13px;border-radius:var(--rs);
+  box-shadow:0 8px 32px rgba(0,0,0,.35);z-index:500;
+  display:flex;align-items:center;gap:9px;
+  transform:translateY(14px);opacity:0;transition:transform .3s ease,opacity .3s ease;pointer-events:none}
+.toast.on{transform:none;opacity:1}
+.toast-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0}
+
+/* ═══════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════ */
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nh);
+  display:flex;align-items:center;padding:0 48px;
+  transition:background .5s ease,backdrop-filter .5s ease,border-bottom .5s ease}
+#nav.solid{background:rgba(20,20,20,.92);backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.07)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;width:100%}
+.nav-logo{font-family:var(--font-d);font-size:23px;font-weight:400;
+  letter-spacing:.04em;color:#fff}
+.nav-logo span{color:var(--blue)}
+.nav-links{display:flex;align-items:center;gap:34px;list-style:none}
+.nav-links a{font-size:11.5px;font-weight:400;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.65);transition:color var(--tf)}
+.nav-links a:hover{color:#fff}
+.nav-acts{display:flex;align-items:center;gap:14px}
+.nav-q{display:flex;align-items:center;gap:8px;padding:10px 20px;
+  background:var(--blue);color:#fff;font-size:10.5px;font-weight:500;
+  letter-spacing:.15em;text-transform:uppercase;border-radius:100px;transition:var(--tf)}
+.nav-q:hover{background:var(--blue-deep)}
+.nav-qc{display:inline-flex;align-items:center;justify-content:center;
+  width:18px;height:18px;background:#fff;color:var(--blue);
+  font-size:10px;font-weight:700;border-radius:50%}
+.nav-ham{display:none;flex-direction:column;gap:5px;padding:8px;cursor:pointer}
+.nav-ham span{width:24px;height:1.5px;background:#fff;display:block;transition:var(--tf)}
+@media(max-width:1080px){.nav-links{display:none}.nav-ham{display:flex}
+  #nav{padding:0 20px}}
+
+/* Mobile nav */
+.mob-nav{position:fixed;inset:0;background:var(--charcoal);z-index:99;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;gap:28px;
+  transform:translateX(100%);transition:transform .55s cubic-bezier(.77,0,.175,1)}
+.mob-nav.open{transform:none}
+.mob-nav a{font-family:var(--font-d);font-size:38px;font-weight:300;color:#fff;
+  letter-spacing:-.01em;transition:color var(--tf)}
+.mob-nav a:hover{color:var(--blue)}
+.mob-close{position:absolute;top:24px;right:24px;width:44px;height:44px;
+  display:flex;align-items:center;justify-content:center;color:#fff;
+  font-size:22px;cursor:pointer}
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+#hero{position:relative;height:100vh;min-height:680px;overflow:hidden;display:flex;align-items:flex-end}
+
+@keyframes kB{
+  0%{transform:scale(1.08) translate(0,0)}
+  40%{transform:scale(1.13) translate(-1%,-0.6%)}
+  100%{transform:scale(1.08) translate(0,0)}
+}
+.hero-bg{position:absolute;inset:0;
+  background-image:url("https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=90");
+  background-size:cover;background-position:center 40%;
+  animation:kB 22s ease-in-out infinite;will-change:transform}
+.hero-ov{position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(0,0,0,.18) 0%,rgba(0,0,0,.0) 35%,rgba(0,0,0,.45) 68%,rgba(0,0,0,.82) 100%)}
+.hero-wm{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:var(--font-d);font-size:clamp(90px,20vw,320px);font-weight:300;
+  letter-spacing:-.02em;color:rgba(255,255,255,.055);white-space:nowrap;
+  pointer-events:none;user-select:none}
+
+.hero-cnt{position:relative;z-index:2;padding:0 56px 88px;width:100%}
+@media(max-width:768px){.hero-cnt{padding:0 24px 72px}}
+
+@keyframes fU{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.hero-ey{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--blue-mist);margin-bottom:20px;
+  opacity:0;animation:fU 1s ease .35s forwards}
+.hero-ey::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--blue)}
+.hero-h1{font-family:var(--font-d);font-size:clamp(54px,9vw,128px);font-weight:300;
+  line-height:.94;letter-spacing:-.03em;color:#fff;margin-bottom:22px;
+  opacity:0;animation:fU 1s ease .52s forwards}
+.hero-sub{font-size:17px;font-weight:300;color:rgba(255,255,255,.68);line-height:1.6;
+  margin-bottom:44px;max-width:440px;
+  opacity:0;animation:fU 1s ease .68s forwards}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;
+  opacity:0;animation:fU 1s ease .84s forwards}
+
+.hero-scroll{position:absolute;bottom:38px;right:56px;
+  display:flex;flex-direction:column;align-items:center;gap:9px;z-index:2;
+  opacity:0;animation:fU 1s ease 1.1s forwards}
+.hero-scroll span{font-size:9px;font-weight:500;letter-spacing:.24em;
+  text-transform:uppercase;color:rgba(255,255,255,.42)}
+@keyframes sL{0%,100%{transform:scaleY(0);transform-origin:top}
+  50%{transform:scaleY(1);transform-origin:top}}
+.hero-line{width:1px;height:38px;
+  background:linear-gradient(to bottom,transparent,rgba(255,255,255,.45));
+  animation:sL 2.2s ease-in-out infinite}
+
+/* ═══════════════════════════════════════════
+   BRAND INTRO
+═══════════════════════════════════════════ */
+#brand-intro{background:var(--warm-white);color:var(--charcoal);padding:140px 48px}
+@media(max-width:768px){#brand-intro{padding:80px 20px}}
+.bi-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+  max-width:1304px;margin:0 auto}
+@media(max-width:900px){.bi-grid{grid-template-columns:1fr;gap:48px}}
+.bi-text .eyebrow{color:var(--muted)}
+.bi-headline{font-family:var(--font-d);font-weight:300;
+  font-size:clamp(40px,5.5vw,78px);line-height:.97;letter-spacing:-.025em;
+  color:var(--charcoal);margin-bottom:28px}
+.bi-body{font-size:18px;font-weight:300;line-height:1.72;color:#484848;margin-bottom:36px}
+.bi-badge{display:inline-flex;align-items:center;gap:14px;padding:18px 22px;
+  border:1px solid rgba(40,114,161,.25);border-radius:var(--rs);
+  background:rgba(40,114,161,.04)}
+.bi-badge-icon{width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+  background:var(--blue);border-radius:8px;flex-shrink:0}
+.bi-badge-icon svg{width:18px;height:18px;fill:#fff}
+.bi-badge-txt strong{display:block;font-weight:600;color:var(--blue);font-size:14px;margin-bottom:2px}
+.bi-badge-txt span{color:var(--muted);font-size:12px}
+.bi-img{border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;position:relative}
+.bi-img img{width:100%;height:100%;object-fit:cover;transition:transform .9s ease}
+.bi-img:hover img{transform:scale(1.04)}
+
+/* ═══════════════════════════════════════════
+   COLLECTIONS
+═══════════════════════════════════════════ */
+#collections{background:var(--charcoal);padding:130px 0 0}
+.col-hdr{display:flex;justify-content:space-between;align-items:flex-end;
+  padding:0 48px;margin-bottom:56px}
+@media(max-width:768px){.col-hdr{flex-direction:column;align-items:flex-start;gap:16px;padding:0 20px}}
+.col-hdr .eyebrow{color:rgba(255,255,255,.45)}
+.col-hdr .headline{color:#fff}
+.col-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:3px}
+.col-card{position:relative;aspect-ratio:3/4;overflow:hidden;cursor:pointer;background:#111}
+.col-card img{width:100%;height:100%;object-fit:cover;
+  transition:transform .75s var(--ease);will-change:transform}
+.col-card:hover img{transform:scale(1.07)}
+.col-ov{position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.82) 0%,transparent 52%);
+  transition:opacity .35s ease}
+.col-card:hover .col-ov{opacity:.92}
+.col-info{position:absolute;bottom:0;left:0;right:0;padding:28px 24px;
+  transform:translateY(6px);transition:transform .38s ease}
+.col-card:hover .col-info{transform:none}
+.col-name{font-family:var(--font-d);font-size:27px;font-weight:300;color:#fff;
+  letter-spacing:-.01em;margin-bottom:6px}
+.col-arrow{font-size:12px;color:var(--blue-mist);letter-spacing:.12em;text-transform:uppercase;
+  opacity:0;transform:translateY(7px);transition:opacity .35s ease .1s,transform .35s ease .1s}
+.col-card:hover .col-arrow{opacity:1;transform:none}
+
+/* ═══════════════════════════════════════════
+   THE SPACES
+═══════════════════════════════════════════ */
+#spaces{background:var(--warm-white);color:var(--charcoal);padding:130px 48px}
+@media(max-width:768px){#spaces{padding:80px 20px}}
+.sp-hdr{max-width:1304px;margin:0 auto 64px}
+.sp-hdr .eyebrow{color:var(--muted)}
+.sp-hdr .headline{color:var(--charcoal)}
+.sp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1304px;margin:0 auto}
+@media(max-width:960px){.sp-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.sp-grid{grid-template-columns:1fr}}
+.sp-card{border-radius:var(--r);overflow:hidden;cursor:pointer;position:relative;background:#111}
+.sp-img{width:100%;aspect-ratio:3/4;object-fit:cover;
+  transition:transform .75s ease;display:block}
+.sp-card:hover .sp-img{transform:scale(1.05)}
+.sp-info{position:absolute;bottom:0;left:0;right:0;padding:22px;
+  background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 100%)}
+.sp-room{font-family:var(--font-d);font-size:25px;font-weight:300;color:#fff;margin-bottom:3px}
+.sp-meta{font-size:10.5px;color:rgba(255,255,255,.58);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.sp-link{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--blue-mist);
+  opacity:0;transform:translateY(7px);transition:opacity .3s ease,transform .3s ease}
+.sp-card:hover .sp-link{opacity:1;transform:none}
+
+/* ═══════════════════════════════════════════
+   SCROLL SPACE TRANSITION
+═══════════════════════════════════════════ */
+#sst{position:relative;height:500vh;background:#080808}
+.sst-sticky{position:sticky;top:0;height:100vh;overflow:hidden}
+.sst-panel{position:absolute;inset:0;opacity:0;transition:opacity .75s ease;pointer-events:none}
+.sst-panel.act{opacity:1;pointer-events:auto}
+.sst-panel img{width:100%;height:100%;object-fit:cover}
+@keyframes slowZ{0%{transform:scale(1)}100%{transform:scale(1.07)}}
+.sst-panel.act img{animation:slowZ 9s ease forwards}
+.sst-ov{position:absolute;inset:0;
+  background:linear-gradient(to right,rgba(0,0,0,.62) 0%,rgba(0,0,0,.12) 55%,transparent 100%)}
+.sst-label{position:absolute;left:8%;top:50%;transform:translateY(-50%);color:#fff;max-width:380px}
+.sst-ey{font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--blue-mist);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.sst-ey::before{content:'';width:22px;height:1px;background:var(--blue)}
+.sst-room{font-family:var(--font-d);font-size:clamp(52px,9vw,106px);font-weight:300;
+  line-height:1;letter-spacing:-.02em;margin-bottom:14px}
+.sst-desc{font-size:15px;font-weight:300;color:rgba(255,255,255,.65);line-height:1.65}
+.sst-dots{position:absolute;right:44px;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:10px;z-index:10}
+.sst-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);
+  cursor:pointer;transition:background .3s,transform .3s}
+.sst-dot.act{background:var(--blue);transform:scale(1.7)}
+
+/* ═══════════════════════════════════════════
+   TILE VISUALIZER
+═══════════════════════════════════════════ */
+#visualizer{background:#0D0D0D;padding:120px 48px}
+@media(max-width:768px){#visualizer{padding:72px 20px}}
+.viz-hdr{text-align:center;margin:0 auto 56px;max-width:560px}
+.viz-hdr .eyebrow{justify-content:center;color:rgba(255,255,255,.4)}
+.viz-hdr .headline{color:#fff;margin-bottom:14px}
+.viz-hdr p{font-size:16px;font-weight:300;color:rgba(255,255,255,.46)}
+.viz-in{display:grid;grid-template-columns:1fr 300px;gap:36px;max-width:1160px;margin:0 auto;align-items:start}
+@media(max-width:880px){.viz-in{grid-template-columns:1fr}}
+.viz-room{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:16/10;background:#111}
+.viz-ri{position:absolute;inset:0;opacity:0;transition:opacity .55s ease}
+.viz-ri.act{opacity:1}
+.viz-ri img{width:100%;height:100%;object-fit:cover}
+.viz-badge{position:absolute;bottom:18px;left:18px;
+  background:rgba(0,0,0,.55);backdrop-filter:blur(10px);padding:8px 14px;
+  border-radius:100px;font-size:10.5px;font-weight:500;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.78)}
+.viz-room-sw{display:flex;gap:8px;margin-bottom:22px}
+.viz-sw-btn{flex:1;padding:10px;border-radius:var(--rs);
+  border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.48);
+  font-size:10.5px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;transition:var(--tf)}
+.viz-sw-btn.act{background:var(--blue);color:#fff;border-color:var(--blue)}
+.viz-sec h3{font-size:9.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(255,255,255,.35);margin-bottom:10px}
+.viz-tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:22px}
+.viz-tile{aspect-ratio:1;border-radius:var(--rs);overflow:hidden;cursor:pointer;position:relative;
+  border:2px solid transparent;transition:border-color .22s,transform .22s}
+.viz-tile img{width:100%;height:100%;object-fit:cover}
+.viz-tile.sel{border-color:var(--blue);transform:scale(.94)}
+.viz-tile-nm{position:absolute;bottom:0;left:0;right:0;padding:5px 7px;
+  background:linear-gradient(to top,rgba(0,0,0,.8),transparent);
+  font-size:9.5px;color:#fff;font-weight:400}
+
+/* ═══════════════════════════════════════════
+   TILE DISCOVERY
+═══════════════════════════════════════════ */
+#discovery{background:var(--warm-white);color:var(--charcoal);padding:120px 48px 0}
+@media(max-width:768px){#discovery{padding:72px 20px 0}}
+.disc-hdr{max-width:1304px;margin:0 auto 40px}
+.disc-hdr .eyebrow{color:var(--muted)}
+.disc-hdr .headline{color:var(--charcoal);margin-bottom:36px}
+.search-wrap{position:relative;max-width:680px}
+.search-in{width:100%;padding:18px 22px 18px 52px;font-size:16px;font-weight:300;
+  border:1.5px solid rgba(0,0,0,.13);border-radius:100px;background:#fff;
+  color:var(--charcoal);outline:none;transition:border-color .2s ease}
+.search-in:focus{border-color:var(--blue)}
+.search-in::placeholder{color:rgba(0,0,0,.3)}
+.search-ic{position:absolute;left:18px;top:50%;transform:translateY(-50%);
+  width:20px;height:20px;color:var(--muted);pointer-events:none}
+.filter-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px;max-width:1304px;margin-left:auto;margin-right:auto}
+.fc{padding:7px 15px;border-radius:100px;border:1px solid rgba(0,0,0,.14);
+  font-size:11.5px;font-weight:400;color:var(--charcoal);background:#fff;
+  cursor:pointer;transition:var(--tf)}
+.fc:hover,.fc.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.no-results{padding:60px 20px;text-align:center;color:var(--muted);font-size:15px}
+
+/* ═══════════════════════════════════════════
+   FEATURED TILES / PRODUCT GRID
+═══════════════════════════════════════════ */
+#featured{background:var(--warm-white);color:var(--charcoal);padding:60px 48px 120px}
+@media(max-width:768px){#featured{padding:40px 20px 80px}}
+.feat-hdr{max-width:1304px;margin:0 auto 40px}
+.feat-hdr .eyebrow{color:var(--muted)}
+.feat-hdr .headline{color:var(--charcoal)}
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));
+  gap:22px;max-width:1304px;margin:0 auto}
+.pc{border-radius:var(--r);overflow:hidden;background:#fff;
+  border:1px solid rgba(0,0,0,.07);transition:transform .4s ease,box-shadow .4s ease;cursor:pointer}
+.pc:hover{transform:translateY(-4px);box-shadow:0 18px 56px rgba(0,0,0,.11)}
+.pc-img{position:relative;overflow:hidden;aspect-ratio:1;background:#f2efe9}
+.pc-img img{width:100%;height:100%;object-fit:cover;transition:transform .65s ease}
+.pc:hover .pc-img img{transform:scale(1.06)}
+.pc-avail{position:absolute;top:12px;left:12px;padding:4px 10px;
+  border-radius:100px;font-size:9.5px;font-weight:500;letter-spacing:.08em;background:rgba(255,255,255,.92)}
+.av-in{color:#1A7A4A}.av-ord{color:#7A5C2E}
+.pc-body{padding:18px}
+.pc-brand{font-size:9.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:4px}
+.pc-name{font-family:var(--font-d);font-size:21px;font-weight:400;
+  color:var(--charcoal);margin-bottom:7px;line-height:1.18}
+.pc-meta{font-size:11.5px;color:var(--muted);margin-bottom:14px;line-height:1.6}
+.pc-meta span{display:block}
+.pc-foot{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.pc-price{font-size:15px;font-weight:500;color:var(--charcoal)}
+.pc-price.rq{font-size:11px;color:var(--muted);font-weight:400}
+.pc-btns{display:flex;gap:7px;align-items:center}
+.pc-qb{padding:9px 15px;background:var(--charcoal);color:#fff;font-size:9.5px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;border-radius:100px;transition:var(--tf)}
+.pc-qb:hover{background:var(--blue)}
+.pc-ab{display:flex;align-items:center;justify-content:center;width:34px;height:34px;
+  border-radius:50%;background:var(--charcoal);color:#fff;font-size:17px;transition:var(--tf)}
+.pc-ab:hover{background:var(--blue)}
+
+/* ═══════════════════════════════════════════
+   PRODUCT MODAL
+═══════════════════════════════════════════ */
+.pm-ov{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:200;
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  opacity:0;pointer-events:none;transition:opacity .32s ease;backdrop-filter:blur(5px)}
+.pm-ov.open{opacity:1;pointer-events:all}
+.pm{background:#fff;border-radius:var(--r);max-width:920px;width:100%;
+  max-height:90vh;overflow-y:auto;display:grid;grid-template-columns:1fr 1fr;
+  transform:scale(.96);transition:transform .32s ease;color:var(--charcoal)}
+.pm-ov.open .pm{transform:none}
+@media(max-width:720px){.pm{grid-template-columns:1fr}}
+.pm-gal{position:relative;background:#f2efe9;border-radius:var(--r) 0 0 var(--r);overflow:hidden}
+@media(max-width:720px){.pm-gal{border-radius:var(--r) var(--r) 0 0}}
+.pm-main{width:100%;aspect-ratio:1;object-fit:cover}
+.pm-close{position:absolute;top:14px;right:14px;width:34px;height:34px;
+  border-radius:50%;background:rgba(0,0,0,.38);color:#fff;display:flex;
+  align-items:center;justify-content:center;font-size:17px;cursor:pointer;transition:var(--tf)}
+.pm-close:hover{background:rgba(0,0,0,.6)}
+.pm-body{padding:36px;overflow-y:auto}
+.pm-brand{font-size:9.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:7px}
+.pm-name{font-family:var(--font-d);font-size:34px;font-weight:300;
+  line-height:1.08;margin-bottom:22px}
+.pm-specs{display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;margin-bottom:22px}
+.pm-spec{border-top:1px solid rgba(0,0,0,.08);padding-top:9px}
+.pm-sl{font-size:9.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:3px}
+.pm-sv{font-size:13.5px;color:var(--charcoal)}
+.pm-desc{font-size:14px;line-height:1.72;color:#484848;margin-bottom:28px}
+.pm-add{width:100%;padding:16px;background:var(--charcoal);color:#fff;font-size:11.5px;
+  font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  border-radius:var(--rs);display:flex;align-items:center;justify-content:center;
+  gap:10px;transition:var(--tf)}
+.pm-add:hover{background:var(--blue)}
+.pm-add.added{background:#1A7A4A}
+.pm-price-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.pm-price{font-size:21px;font-weight:500}
+.pm-price.rq{font-size:13px;color:var(--muted);font-weight:400}
+
+/* ═══════════════════════════════════════════
+   QUOTATION DRAWER
+═══════════════════════════════════════════ */
+.q-float{position:fixed;bottom:30px;right:30px;z-index:150;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.q-btn{display:flex;align-items:center;gap:9px;padding:13px 21px;
+  background:var(--charcoal);color:#fff;font-size:11px;font-weight:500;
+  letter-spacing:.13em;text-transform:uppercase;border-radius:100px;
+  box-shadow:0 8px 28px rgba(0,0,0,.32);transition:var(--tf)}
+.q-btn:hover{background:var(--blue)}
+.q-cnt{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;
+  background:var(--blue);border-radius:50%;font-size:10px;font-weight:700;color:#fff}
+.q-btn.has .q-cnt{background:#fff;color:var(--charcoal)}
+.wa-float{display:flex;align-items:center;gap:8px;padding:11px 17px;
+  background:#25D366;color:#fff;font-size:11.5px;font-weight:500;
+  border-radius:100px;box-shadow:0 8px 28px rgba(37,211,102,.28);transition:var(--tf)}
+.wa-float:hover{background:#1EA952}
+
+.qd{position:fixed;top:0;right:0;bottom:0;width:400px;background:#fff;z-index:250;
+  transform:translateX(100%);transition:transform .42s cubic-bezier(.77,0,.175,1);
+  display:flex;flex-direction:column;box-shadow:-18px 0 52px rgba(0,0,0,.13)}
+.qd.open{transform:none}
+@media(max-width:460px){.qd{width:100vw}}
+.qd-ov{position:fixed;inset:0;background:rgba(0,0,0,.48);z-index:249;
+  opacity:0;pointer-events:none;transition:opacity .42s ease}
+.qd-ov.open{opacity:1;pointer-events:all}
+.qd-hdr{padding:28px 26px 18px;border-bottom:1px solid rgba(0,0,0,.08);
+  display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.qd-hdr h2{font-family:var(--font-d);font-size:27px;font-weight:300;color:var(--charcoal)}
+.qd-hcl{width:34px;height:34px;border-radius:50%;border:1px solid rgba(0,0,0,.11);
+  display:flex;align-items:center;justify-content:center;font-size:17px;
+  color:var(--charcoal);cursor:pointer;transition:var(--tf)}
+.qd-hcl:hover{background:var(--charcoal);color:#fff}
+.qd-items{flex:1;overflow-y:auto;padding:18px 26px}
+.qd-empty{text-align:center;padding:56px 20px;color:var(--muted)}
+.qd-empty svg{width:40px;height:40px;margin:0 auto 12px;opacity:.35}
+.qd-empty p{font-size:14px}
+.qd-item{display:grid;grid-template-columns:56px 1fr auto;gap:11px;align-items:center;
+  padding:14px 0;border-bottom:1px solid rgba(0,0,0,.06)}
+.qd-item img{width:56px;height:56px;border-radius:8px;object-fit:cover}
+.qd-iname{font-size:13.5px;font-weight:500;color:var(--charcoal);margin-bottom:2px}
+.qd-imeta{font-size:11px;color:var(--muted)}
+.qty-ctrl{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+.qty-b{width:23px;height:23px;border-radius:50%;border:1px solid rgba(0,0,0,.15);
+  display:flex;align-items:center;justify-content:center;font-size:13px;
+  cursor:pointer;transition:var(--tf);color:var(--charcoal)}
+.qty-b:hover{background:var(--charcoal);color:#fff;border-color:var(--charcoal)}
+.qty-v{font-size:13.5px;font-weight:500;min-width:18px;text-align:center;color:var(--charcoal)}
+.qd-rm{font-size:11px;color:#aaa;cursor:pointer;text-decoration:underline;transition:var(--tf)}
+.qd-rm:hover{color:#C0392B}
+.qd-ft{padding:18px 26px 28px;border-top:1px solid rgba(0,0,0,.08);flex-shrink:0}
+.qd-req{width:100%;padding:15px;background:var(--charcoal);color:#fff;font-size:11px;
+  font-weight:500;letter-spacing:.16em;text-transform:uppercase;border-radius:var(--rs);
+  transition:var(--tf);margin-bottom:10px}
+.qd-req:hover{background:var(--blue)}
+.qd-cl{width:100%;padding:10px;font-size:11px;color:var(--muted);
+  letter-spacing:.1em;text-transform:uppercase;transition:var(--tf)}
+.qd-cl:hover{color:var(--charcoal)}
+
+/* ═══════════════════════════════════════════
+   GET QUOTATION
+═══════════════════════════════════════════ */
+#qform{background:#0C0C0C;color:#fff;padding:120px 48px}
+@media(max-width:768px){#qform{padding:72px 20px}}
+.qf-in{display:grid;grid-template-columns:1fr 1fr;gap:72px;max-width:1160px;margin:0 auto;align-items:start}
+@media(max-width:860px){.qf-in{grid-template-columns:1fr;gap:44px}}
+.qf-txt .eyebrow{color:rgba(255,255,255,.38)}
+.qf-txt .headline{color:#fff;margin-bottom:22px}
+.qf-txt p{font-size:16px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.7}
+.qf{display:flex;flex-direction:column;gap:14px}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fl{font-size:9.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.fi{width:100%;padding:13px 15px;background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.1);border-radius:var(--rs);color:#fff;
+  font-size:15px;font-weight:300;outline:none;transition:border-color .2s ease}
+.fi:focus{border-color:var(--blue)}
+.fi::placeholder{color:rgba(255,255,255,.22)}
+.f-sub{padding:17px 30px;background:var(--blue);color:#fff;font-size:11px;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;border-radius:var(--rs);margin-top:6px;transition:var(--tf)}
+.f-sub:hover{background:var(--blue-deep)}
+.f-ok{display:none;padding:22px;background:rgba(26,122,74,.14);
+  border:1px solid rgba(26,122,74,.28);border-radius:var(--rs);text-align:center}
+.f-ok.on{display:block}
+.f-ok h3{font-family:var(--font-d);font-size:24px;font-weight:300;margin-bottom:8px;color:#fff}
+.f-ref{font-size:12px;color:rgba(255,255,255,.5);margin-top:6px}
+.f-wa{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:12px 20px;
+  background:#25D366;color:#fff;border-radius:100px;font-size:12px;font-weight:500;transition:var(--tf)}
+.f-wa:hover{background:#1EA952}
+
+/* ═══════════════════════════════════════════
+   WHY SKAVI
+═══════════════════════════════════════════ */
+#why{background:var(--warm-white);color:var(--charcoal);padding:120px 48px}
+@media(max-width:768px){#why{padding:72px 20px}}
+.why-hdr{text-align:center;max-width:1304px;margin:0 auto 64px}
+.why-hdr .eyebrow{justify-content:center;color:var(--muted)}
+.why-hdr .headline{color:var(--charcoal);max-width:600px;margin:0 auto}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));
+  gap:0;max-width:1304px;margin:0 auto;
+  border:1px solid rgba(0,0,0,.09);border-radius:var(--r);overflow:hidden}
+.wi{padding:38px 34px;background:#fff;
+  border-right:1px solid rgba(0,0,0,.07);border-bottom:1px solid rgba(0,0,0,.07);
+  transition:background .3s ease}
+.wi:hover{background:var(--blue)}
+.wi:hover .wi-ic,.wi:hover .wi-nm,.wi:hover .wi-ds{color:#fff}
+.wi:hover .wi-ic{border-color:rgba(255,255,255,.28)}
+.wi-ic{width:46px;height:46px;border:1px solid rgba(40,114,161,.25);border-radius:11px;
+  display:flex;align-items:center;justify-content:center;color:var(--blue);
+  margin-bottom:22px;transition:all .3s ease}
+.wi-ic svg{width:20px;height:20px}
+.wi-nm{font-family:var(--font-d);font-size:22px;font-weight:400;
+  color:var(--charcoal);margin-bottom:9px;transition:color .3s ease}
+.wi-ds{font-size:13.5px;font-weight:300;color:var(--muted);
+  line-height:1.62;transition:color .3s ease}
+
+/* ═══════════════════════════════════════════
+   INSPIRATION GALLERY
+═══════════════════════════════════════════ */
+#inspo{background:var(--charcoal);padding:120px 48px}
+@media(max-width:768px){#inspo{padding:72px 20px}}
+.ip-hdr{max-width:1304px;margin:0 auto 44px}
+.ip-hdr .eyebrow{color:rgba(255,255,255,.38)}
+.ip-hdr .headline{color:#fff}
+.ip-filt{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.ipf{padding:7px 15px;border-radius:100px;border:1px solid rgba(255,255,255,.14);
+  font-size:10.5px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);cursor:pointer;transition:var(--tf);background:transparent}
+.ipf.on,.ipf:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+.masonry{columns:4;column-gap:10px;max-width:1304px;margin:44px auto 0}
+@media(max-width:1100px){.masonry{columns:3}}
+@media(max-width:760px){.masonry{columns:2}}
+@media(max-width:480px){.masonry{columns:1}}
+.mi{break-inside:avoid;margin-bottom:10px;border-radius:var(--rs);overflow:hidden;
+  cursor:pointer;position:relative}
+.mi img{width:100%;display:block;transition:transform .62s ease}
+.mi:hover img{transform:scale(1.05)}
+.mi-ov{position:absolute;inset:0;background:rgba(0,0,0,0);
+  display:flex;align-items:flex-end;padding:16px;
+  transition:background .3s ease}
+.mi:hover .mi-ov{background:rgba(0,0,0,.4)}
+.mi-lb{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  color:#fff;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s}
+.mi:hover .mi-lb{opacity:1;transform:none}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:400;
+  display:none;align-items:center;justify-content:center;padding:40px}
+.lb.open{display:flex}
+.lb img{max-width:88vw;max-height:88vh;object-fit:contain;border-radius:var(--rs)}
+.lb-cl{position:absolute;top:22px;right:22px;width:42px;height:42px;border-radius:50%;
+  background:rgba(255,255,255,.1);color:#fff;display:flex;align-items:center;
+  justify-content:center;font-size:19px;cursor:pointer;transition:var(--tf)}
+.lb-cl:hover{background:rgba(255,255,255,.2)}
+
+/* ═══════════════════════════════════════════
+   SHOWROOM
+═══════════════════════════════════════════ */
+#showroom{position:relative;overflow:hidden}
+.sr-bg{position:relative}
+.sr-bg img{width:100%;height:580px;object-fit:cover;object-position:center 30%}
+.sr-ov{position:absolute;inset:0;
+  background:linear-gradient(to right,rgba(0,0,0,.82) 0%,rgba(0,0,0,.4) 44%,rgba(0,0,0,.08) 100%);
+  display:flex;align-items:center;padding:0 80px}
+@media(max-width:768px){.sr-ov{padding:40px 20px;
+  background:linear-gradient(to top,rgba(0,0,0,.9) 0%,rgba(0,0,0,.5) 52%,transparent 100%);
+  align-items:flex-end}}
+.sr-cnt{max-width:460px;color:#fff}
+.sr-cnt .eyebrow{color:rgba(255,255,255,.46)}
+.sr-cnt .headline{color:#fff;margin-bottom:28px}
+.sr-addr p{font-size:14.5px;font-weight:300;color:rgba(255,255,255,.78);line-height:1.85}
+.sr-addr strong{display:block;font-size:19px;font-weight:500;color:#fff;margin-bottom:5px}
+.sr-ph{font-family:var(--font-d);font-size:29px;font-weight:300;color:#fff;
+  margin:22px 0 24px;letter-spacing:-.01em}
+.sr-acts{display:flex;gap:11px;flex-wrap:wrap}
+.map-box{height:280px;background:#192232;position:relative;overflow:hidden}
+.map-box iframe{width:100%;height:100%;border:none;filter:grayscale(.3) saturate(.8)}
+
+/* ═══════════════════════════════════════════
+   INSTAGRAM
+═══════════════════════════════════════════ */
+#gram{background:var(--warm-white);color:var(--charcoal);padding:120px 48px}
+@media(max-width:768px){#gram{padding:72px 20px}}
+.gram-hdr{text-align:center;max-width:1304px;margin:0 auto 40px}
+.gram-hdr .eyebrow{justify-content:center;color:var(--muted)}
+.gram-hdr .headline{color:var(--charcoal);margin-bottom:14px}
+.gram-handle{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px}
+.gram-handle a{font-size:14px;font-weight:500;color:var(--blue)}
+.gram-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;max-width:1304px;margin:0 auto}
+@media(max-width:900px){.gram-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.gram-grid{grid-template-columns:repeat(2,1fr)}}
+.gi{aspect-ratio:1;overflow:hidden;position:relative;cursor:pointer}
+.gi img{width:100%;height:100%;object-fit:cover;transition:transform .55s ease}
+.gi:hover img{transform:scale(1.07)}
+.gi-ov{position:absolute;inset:0;background:rgba(40,114,161,0);
+  display:flex;align-items:center;justify-content:center;transition:background .3s}
+.gi:hover .gi-ov{background:rgba(40,114,161,.4)}
+.gi-ic{color:#fff;opacity:0;transition:opacity .3s}
+.gi:hover .gi-ic{opacity:1}
+
+/* ═══════════════════════════════════════════
+   FINAL CTA
+═══════════════════════════════════════════ */
+#final-cta{position:relative;min-height:92vh;overflow:hidden;
+  display:flex;align-items:center;justify-content:center}
+.fc-bg{position:absolute;inset:0;
+  background-image:url("https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=88");
+  background-size:cover;background-position:center 40%;
+  animation:kB 26s ease-in-out infinite}
+.fc-ov{position:absolute;inset:0;background:rgba(0,0,0,.64)}
+.fc-wm{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:var(--font-d);font-size:clamp(80px,20vw,280px);font-weight:300;
+  color:rgba(255,255,255,.048);white-space:nowrap;letter-spacing:-.02em;pointer-events:none}
+.fc-cnt{position:relative;z-index:2;text-align:center;padding:0 40px}
+.fc-h{font-family:var(--font-d);font-size:clamp(38px,7vw,90px);font-weight:300;
+  color:#fff;letter-spacing:-.02em;line-height:1.04;margin-bottom:44px}
+.fc-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+#footer{background:#080808;color:rgba(255,255,255,.48);padding:76px 48px 36px;
+  border-top:1px solid rgba(255,255,255,.06)}
+@media(max-width:768px){#footer{padding:56px 20px 28px}}
+.ft-in{max-width:1304px;margin:0 auto}
+.ft-top{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:56px;margin-bottom:56px}
+@media(max-width:860px){.ft-top{grid-template-columns:1fr 1fr;gap:36px}}
+@media(max-width:560px){.ft-top{grid-template-columns:1fr}}
+.ft-wm{font-family:var(--font-d);font-size:30px;font-weight:300;color:#fff;
+  letter-spacing:.02em;margin-bottom:6px}
+.ft-tag{font-size:11.5px;color:rgba(255,255,255,.38);margin-bottom:20px;letter-spacing:.04em}
+.ft-addr{font-size:13px;line-height:1.82;color:rgba(255,255,255,.48);font-weight:300}
+.ft-addr a{color:var(--blue-mist)}
+.ft-ct{font-size:9.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.28);margin-bottom:18px}
+.ft-lk{list-style:none;display:flex;flex-direction:column;gap:11px}
+.ft-lk a{font-size:13px;font-weight:300;color:rgba(255,255,255,.48);transition:color .2s}
+.ft-lk a:hover{color:#fff}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;
+  padding-top:36px;border-top:1px solid rgba(255,255,255,.06);font-size:11.5px;color:rgba(255,255,255,.22)}
+@media(max-width:560px){.ft-bot{flex-direction:column;gap:8px;text-align:center}}
+
+/* ═══════════════════════════════════════════
+   ADMIN PANEL
+═══════════════════════════════════════════ */
+#adm{display:none;background:#fff;min-height:100vh;color:var(--charcoal)}
+body.adm #adm{display:block}
+body.adm > :not(#adm){display:none!important}
+.adm-nav{position:sticky;top:0;background:var(--charcoal);color:#fff;
+  padding:0 28px;height:56px;display:flex;align-items:center;
+  justify-content:space-between;z-index:10;border-bottom:1px solid rgba(255,255,255,.08)}
+.adm-nav h1{font-size:15px;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+.adm-nav small{font-size:10.5px;color:rgba(255,255,255,.4);margin-left:10px}
+.adm-exit{font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.1em;
+  text-transform:uppercase;cursor:pointer;transition:color .2s}
+.adm-exit:hover{color:#fff}
+.adm-bd{display:grid;grid-template-columns:196px 1fr;min-height:calc(100vh - 56px)}
+.adm-sb{background:#f6f6f6;padding:20px 0;border-right:1px solid rgba(0,0,0,.08)}
+.adm-sb-i{display:block;padding:11px 22px;font-size:13px;color:#555;cursor:pointer;
+  transition:var(--tf);border-left:2.5px solid transparent}
+.adm-sb-i.on,.adm-sb-i:hover{color:var(--blue);border-left-color:var(--blue);
+  background:rgba(40,114,161,.05)}
+.adm-ct{padding:36px;overflow-y:auto}
+.adm-sc{display:none}.adm-sc.on{display:block}
+.adm-sc h2{font-family:var(--font-d);font-size:30px;font-weight:300;
+  color:var(--charcoal);margin-bottom:28px}
+.adm-bar{display:flex;justify-content:flex-end;margin-bottom:18px}
+.ab{padding:9px 16px;border-radius:7px;font-size:10.5px;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:var(--tf)}
+.ab-p{background:var(--blue);color:#fff;border:1px solid var(--blue)}
+.ab-p:hover{background:var(--blue-deep)}
+.ab-o{background:transparent;color:var(--charcoal);border:1px solid rgba(0,0,0,.18)}
+.ab-o:hover{background:var(--charcoal);color:#fff}
+.ab-d{background:transparent;color:#C0392B;border:1px solid rgba(192,57,43,.28)}
+.ab-d:hover{background:#C0392B;color:#fff}
+.adm-tb{width:100%;border-collapse:collapse}
+.adm-tb th{font-size:9.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);text-align:left;padding:9px 11px;border-bottom:1px solid rgba(0,0,0,.1)}
+.adm-tb td{padding:11px;font-size:13px;color:var(--charcoal);
+  border-bottom:1px solid rgba(0,0,0,.05);vertical-align:middle}
+.adm-tb tr:hover td{background:rgba(0,0,0,.02)}
+.adm-tb img{width:38px;height:38px;object-fit:cover;border-radius:6px}
+.abd{display:inline-block;padding:2px 8px;border-radius:100px;font-size:10px;font-weight:500}
+.abd-y{background:rgba(26,122,74,.1);color:#1A7A4A}
+.abd-n{background:rgba(192,57,43,.1);color:#C0392B}
+.abd-b{background:rgba(40,114,161,.1);color:var(--blue)}
+/* Admin modal */
+.adm-modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:500;
+  display:none;align-items:center;justify-content:center;padding:20px}
+.adm-modal-ov.open{display:flex}
+.adm-modal{background:#fff;border-radius:var(--r);max-width:760px;width:100%;
+  max-height:90vh;overflow-y:auto;padding:36px}
+.adm-modal h3{font-family:var(--font-d);font-size:28px;font-weight:300;margin-bottom:24px}
+.adm-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.adm-fg{display:flex;flex-direction:column;gap:5px}
+.adm-fg.full{grid-column:span 2}
+.adm-fl{font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.adm-fi{padding:10px 12px;border:1px solid rgba(0,0,0,.15);border-radius:7px;
+  font-size:14px;color:var(--charcoal);outline:none;transition:border-color .2s;font-family:var(--font-b)}
+.adm-fi:focus{border-color:var(--blue)}
+.adm-modal-acts{display:flex;gap:10px;justify-content:flex-end;margin-top:20px;grid-column:span 2}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE / MISC
+═══════════════════════════════════════════ */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
+.qd ::-webkit-scrollbar-thumb,.pm ::-webkit-scrollbar-thumb{background:rgba(0,0,0,.12)}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+/* ═══════════════════════════════════════════
+   ADMIN LOGIN
+═══════════════════════════════════════════ */
+.adm-login-wrap{position:fixed;inset:0;background:var(--charcoal);z-index:2000;
+  display:flex;align-items:center;justify-content:center;padding:20px}
+.adm-login-box{background:#fff;border-radius:var(--r);padding:52px 44px;
+  width:100%;max-width:420px;box-shadow:0 32px 80px rgba(0,0,0,.4)}
+.adm-login-logo{font-family:var(--font-d);font-size:28px;font-weight:300;
+  color:var(--charcoal);letter-spacing:.04em;margin-bottom:4px}
+.adm-login-logo span{color:var(--blue)}
+.adm-login-sub{font-size:11px;color:var(--muted);letter-spacing:.12em;
+  text-transform:uppercase;margin-bottom:36px}
+.adm-login-title{font-family:var(--font-d);font-size:22px;font-weight:300;
+  color:var(--charcoal);margin-bottom:24px}
+.adm-lf{display:flex;flex-direction:column;gap:14px}
+.adm-lfg{display:flex;flex-direction:column;gap:5px}
+.adm-lfl{font-size:9.5px;font-weight:600;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted)}
+.adm-lfi{padding:13px 15px;border:1.5px solid rgba(0,0,0,.14);
+  border-radius:var(--rs);font-size:15px;color:var(--charcoal);
+  outline:none;transition:border-color .2s;font-family:var(--font-b);width:100%}
+.adm-lfi:focus{border-color:var(--blue)}
+.adm-login-btn{padding:16px;background:var(--blue);color:#fff;font-size:11.5px;
+  font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  border-radius:var(--rs);width:100%;transition:background .25s;margin-top:4px}
+.adm-login-btn:hover{background:var(--blue-deep)}
+.adm-login-err{padding:12px 14px;background:rgba(192,57,43,.08);
+  border:1px solid rgba(192,57,43,.22);border-radius:var(--rs);
+  font-size:13px;color:#C0392B;display:none}
+.adm-login-err.on{display:block}
+.adm-logout-btn{display:flex;align-items:center;gap:7px;padding:8px 16px;
+  background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border-radius:100px;
+  font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  transition:background .2s}
+.adm-logout-btn:hover{background:rgba(255,255,255,.15);color:#fff}
+
+
+.role-badge{display:inline-block;padding:3px 10px;border-radius:100px;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.role-admin{background:rgba(40,114,161,.12);color:var(--blue)}
+.role-editor{background:rgba(122,92,46,.12);color:var(--wood)}
+.member-avatar{width:34px;height:34px;border-radius:50%;background:var(--blue);
+  color:#fff;display:inline-flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:600;font-family:var(--font-b)}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-in">
+    <a href="#hero" class="nav-logo">SKAVI<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#collections">Collections</a></li>
+      <li><a href="#spaces">Spaces</a></li>
+      <li><a href="#discovery">Find Tiles</a></li>
+      <li><a href="#inspo">Inspiration</a></li>
+      <li><a href="#showroom">Showroom</a></li>
+    </ul>
+    <div class="nav-acts">
+      <button class="nav-q" onclick="openDrawer()">
+        My Quotation <span class="nav-qc" id="nav-cnt">0</span>
+      </button>
+      <div class="nav-ham" id="ham" onclick="toggleMob()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mob-nav" id="mob-nav">
+  <div class="mob-close" onclick="toggleMob()">✕</div>
+  <a href="#collections" onclick="toggleMob()">Collections</a>
+  <a href="#spaces" onclick="toggleMob()">Spaces</a>
+  <a href="#discovery" onclick="toggleMob()">Find Tiles</a>
+  <a href="#inspo" onclick="toggleMob()">Inspiration</a>
+  <a href="#showroom" onclick="toggleMob()">Showroom</a>
+  <a href="#qform" onclick="toggleMob()">Get Quotation</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ov"></div>
+  <div class="hero-wm">SKAVI</div>
+  <div class="hero-cnt">
+    <p class="hero-ey">SKAVI TILES WORLD · AUTHORIZED KAG TILES DEALER</p>
+    <h1 class="hero-h1">Where Every<br>Space Begins.</h1>
+    <p class="hero-sub">Premium tiles designed to transform the way you live.</p>
+    <div class="hero-ctas">
+      <a href="#collections" class="btn-p">Explore Collections</a>
+      <a href="#qform" class="btn-o">Get Quotation</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>SCROLL TO EXPLORE</span>
+    <div class="hero-line"></div>
+  </div>
+</section>
+
+<!-- BRAND INTRO -->
+<section id="brand-intro">
+  <div class="bi-grid">
+    <div class="bi-text rv">
+      <p class="eyebrow">SKAVI TILES WORLD</p>
+      <h2 class="bi-headline">Tiles that<br>define the space.</h2>
+      <p class="bi-body">Discover tiles for floors, walls, bathrooms, kitchens, exteriors and every space in between. Each surface chosen for how it feels underfoot, to the touch, and in the light.</p>
+      <div class="bi-badge">
+        <div class="bi-badge-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L3 7l9 5 9-5-9-5zM3 17l9 5 9-5M3 12l9 5 9-5"/></svg>
+        </div>
+        <div class="bi-badge-txt">
+          <strong>Authorized Dealer of KAG Tiles</strong>
+          <span>Ettayapuram · Tamil Nadu</span>
+        </div>
+      </div>
+    </div>
+    <div class="bi-img rv rv-d2">
+      <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=90" alt="Luxury interior with premium tile flooring" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section id="collections">
+  <div class="col-hdr">
+    <div>
+      <p class="eyebrow eyebrow--light rv">THE COLLECTIONS</p>
+      <h2 class="headline rv rv-d1">A surface for every vision.</h2>
+    </div>
+  </div>
+  <div class="col-grid" id="col-grid"></div>
+</section>
+
+<!-- THE SPACES -->
+<section id="spaces">
+  <div class="sp-hdr rv">
+    <p class="eyebrow">THE SPACES</p>
+    <h2 class="headline">See the difference.</h2>
+  </div>
+  <div class="sp-grid">
+    <div class="sp-card rv">
+      <img class="sp-img" src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=700&q=88" alt="Living room with premium tiles" loading="lazy">
+      <div class="sp-info">
+        <div class="sp-room">Living</div>
+        <div class="sp-meta">Large-Format Floor · Glossy Finish</div>
+        <a href="#collections" class="sp-link">Explore tiles →</a>
+      </div>
+    </div>
+    <div class="sp-card rv rv-d1">
+      <img class="sp-img" src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=700&q=88" alt="Kitchen with tile backsplash" loading="lazy">
+      <div class="sp-info">
+        <div class="sp-room">Kitchen</div>
+        <div class="sp-meta">Backsplash · Anti-Stain Matt</div>
+        <a href="#collections" class="sp-link">Explore tiles →</a>
+      </div>
+    </div>
+    <div class="sp-card rv rv-d2">
+      <img class="sp-img" src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=700&q=88" alt="Bedroom with wood-look tiles" loading="lazy">
+      <div class="sp-info">
+        <div class="sp-room">Bedroom</div>
+        <div class="sp-meta">Wooden Look · Warm Matt</div>
+        <a href="#collections" class="sp-link">Explore tiles →</a>
+      </div>
+    </div>
+    <div class="sp-card rv rv-d3">
+      <img class="sp-img" src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=700&q=88" alt="Luxury bathroom with marble tiles" loading="lazy">
+      <div class="sp-info">
+        <div class="sp-room">Bathroom</div>
+        <div class="sp-meta">Marble Look · Polished Porcelain</div>
+        <a href="#collections" class="sp-link">Explore tiles →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCROLL SPACE TRANSITION -->
+<section id="sst">
+  <div class="sst-sticky" id="sst-sticky">
+    <div class="sst-panel act" data-idx="0">
+      <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1920&q=88" alt="Living room" loading="lazy">
+      <div class="sst-ov"></div>
+      <div class="sst-label">
+        <p class="sst-ey">THE LIVING ROOM</p>
+        <h2 class="sst-room">Living</h2>
+        <p class="sst-desc">Large-format vitrified tiles that anchor the room. Light-catching glossy finishes that make every square foot feel considered.</p>
+      </div>
+    </div>
+    <div class="sst-panel" data-idx="1">
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1920&q=88" alt="Kitchen" loading="lazy">
+      <div class="sst-ov"></div>
+      <div class="sst-label">
+        <p class="sst-ey">THE KITCHEN</p>
+        <h2 class="sst-room">Kitchen</h2>
+        <p class="sst-desc">Anti-stain ceramic backsplash tiles and large-format stone-look floors built for the demands of daily life without compromising beauty.</p>
+      </div>
+    </div>
+    <div class="sst-panel" data-idx="2">
+      <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1920&q=88" alt="Bedroom" loading="lazy">
+      <div class="sst-ov"></div>
+      <div class="sst-label">
+        <p class="sst-ey">THE BEDROOM</p>
+        <h2 class="sst-room">Bedroom</h2>
+        <p class="sst-desc">Warm wood-look planks and soft stone tones that bring quiet comfort to the most personal space in a home.</p>
+      </div>
+    </div>
+    <div class="sst-panel" data-idx="3">
+      <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1920&q=88" alt="Bathroom" loading="lazy">
+      <div class="sst-ov"></div>
+      <div class="sst-label">
+        <p class="sst-ey">THE BATHROOM</p>
+        <h2 class="sst-room">Bathroom</h2>
+        <p class="sst-desc">Marble-look porcelain, wall-to-wall stone textures, and slip-resistant floor tiles that turn a bathroom into a sanctuary.</p>
+      </div>
+    </div>
+    <div class="sst-panel" data-idx="4">
+      <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1920&q=88" alt="Outdoor" loading="lazy">
+      <div class="sst-ov"></div>
+      <div class="sst-label">
+        <p class="sst-ey">THE OUTDOOR</p>
+        <h2 class="sst-room">Outdoor</h2>
+        <p class="sst-desc">Weather-resistant anti-slip tiles that bridge interior warmth and natural landscape — from terraces to pool surrounds.</p>
+      </div>
+    </div>
+    <div class="sst-dots" id="sst-dots">
+      <div class="sst-dot act" onclick="setSSTPanel(0)"></div>
+      <div class="sst-dot" onclick="setSSTPanel(1)"></div>
+      <div class="sst-dot" onclick="setSSTPanel(2)"></div>
+      <div class="sst-dot" onclick="setSSTPanel(3)"></div>
+      <div class="sst-dot" onclick="setSSTPanel(4)"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TILE VISUALIZER -->
+<section id="visualizer">
+  <div class="viz-hdr rv">
+    <p class="eyebrow eyebrow--light">MAKE IT YOURS</p>
+    <h2 class="headline">Change the surface.<br>Change the space.</h2>
+    <p>Select a room and a tile to see how different surfaces transform a space.</p>
+  </div>
+  <div class="viz-in">
+    <div>
+      <div class="viz-room-sw">
+        <button class="viz-sw-btn act" onclick="setVizRoom('bathroom',this)">Bathroom</button>
+        <button class="viz-sw-btn" onclick="setVizRoom('living',this)">Living Room</button>
+      </div>
+      <div class="viz-room" id="viz-room">
+        <!-- Bathroom images -->
+        <div class="viz-ri act" data-room="bathroom" data-tile="b0">
+          <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1400&q=90" alt="Marble look bathroom" loading="lazy">
+        </div>
+        <div class="viz-ri" data-room="bathroom" data-tile="b1">
+          <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1400&q=90" alt="Dark bathroom" loading="lazy">
+        </div>
+        <div class="viz-ri" data-room="bathroom" data-tile="b2">
+          <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1400&q=90" alt="Stone bathroom" loading="lazy">
+        </div>
+        <div class="viz-ri" data-room="bathroom" data-tile="b3">
+          <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=1400&q=90" alt="Minimal bathroom" loading="lazy">
+        </div>
+        <!-- Living room images -->
+        <div class="viz-ri" data-room="living" data-tile="l0">
+          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1400&q=90" alt="Light tile living room" loading="lazy">
+        </div>
+        <div class="viz-ri" data-room="living" data-tile="l1">
+          <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1400&q=90" alt="Warm tone living room" loading="lazy">
+        </div>
+        <div class="viz-ri" data-room="living" data-tile="l2">
+          <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=1400&q=90" alt="Stone look living room" loading="lazy">
+        </div>
+        <div class="viz-ri" data-room="living" data-tile="l3">
+          <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=1400&q=90" alt="Contemporary living room" loading="lazy">
+        </div>
+        <div class="viz-badge" id="viz-badge">Calacatta White · Marble Look</div>
+      </div>
+    </div>
+    <div class="visualizer-controls">
+      <div class="viz-sec" id="viz-wall-sec">
+        <h3>Select Surface</h3>
+        <div class="viz-tiles" id="viz-tiles"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TILE DISCOVERY + FEATURED -->
+<section id="discovery">
+  <div class="disc-hdr">
+    <p class="eyebrow rv">FIND YOUR TILE</p>
+    <h2 class="headline rv rv-d1">Search by the way<br>you imagine it.</h2>
+    <div class="search-wrap">
+      <svg class="search-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input class="search-in" type="text" id="search-in" placeholder="Search tiles, colours, finishes…" oninput="filterProducts()">
+    </div>
+    <div class="filter-row" id="filter-row"></div>
+  </div>
+</section>
+
+<section id="featured">
+  <div class="feat-hdr">
+    <p class="eyebrow">SELECTED COLLECTION</p>
+    <h2 class="headline">Chosen for how they feel.</h2>
+  </div>
+  <div class="prod-grid" id="prod-grid"></div>
+  <div class="no-results" id="no-results" style="display:none">No tiles match your search. Try a different keyword or filter.</div>
+</section>
+
+<!-- QUOTATION FORM -->
+<section id="qform">
+  <div class="qf-in">
+    <div class="qf-txt rv">
+      <p class="eyebrow eyebrow--light">YOUR SPACE. YOUR SELECTION.</p>
+      <h2 class="headline">Let's find the right tile for it.</h2>
+      <p>Fill in your details and selected tiles. We will contact you with availability and a personalised quotation.</p>
+    </div>
+    <div>
+      <form class="qf" id="qf" onsubmit="submitQuotation(event)">
+        <div class="fg"><label class="fl">Your Name</label><input class="fi" type="text" id="q-name" placeholder="Full name" required></div>
+        <div class="fg"><label class="fl">Mobile Number</label><input class="fi" type="tel" id="q-phone" placeholder="+91 00000 00000" required></div>
+        <div class="fg"><label class="fl">Email Address</label><input class="fi" type="email" id="q-email" placeholder="your@email.com"></div>
+        <div class="fg"><label class="fl">Location</label><input class="fi" type="text" id="q-loc" placeholder="Your city or area"></div>
+        <div class="fg"><label class="fl">Message</label><textarea class="fi" id="q-msg" rows="3" placeholder="Tell us about your project or any questions…"></textarea></div>
+        <div class="fg">
+          <label class="fl">Selected Tiles</label>
+          <div id="qf-items" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--rs);padding:12px;min-height:52px;font-size:13px;color:rgba(255,255,255,.5)">
+            No tiles selected yet. Add from the collection above.
+          </div>
+        </div>
+        <button type="submit" class="f-sub">Request Quotation</button>
+      </form>
+      <div class="f-ok" id="f-ok">
+        <h3>Enquiry Received</h3>
+        <p style="color:rgba(255,255,255,.65);font-size:14px">We will contact you shortly with availability and pricing.</p>
+        <p class="f-ref" id="f-ref"></p>
+        <a class="f-wa" id="f-wa-link" href="#" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Send via WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SKAVI -->
+<section id="why">
+  <div class="why-hdr rv">
+    <p class="eyebrow">WHY SKAVI</p>
+    <h2 class="headline">More than a tile. It's the beginning of a space.</h2>
+  </div>
+  <div class="why-grid">
+    <div class="wi rv">
+      <div class="wi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L3 7l9 5 9-5-9-5zM3 17l9 5 9-5M3 12l9 5 9-5"/></svg></div>
+      <div class="wi-nm">Authorized KAG Tiles Dealer</div>
+      <div class="wi-ds">Officially authorized to stock and supply the complete KAG Tiles range, ensuring authenticity and quality with every tile.</div>
+    </div>
+    <div class="wi rv rv-d1">
+      <div class="wi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+      <div class="wi-nm">Wide Collections</div>
+      <div class="wi-ds">An extensive range covering floors, walls, bathrooms, kitchens, outdoor spaces, elevations and more — all under one roof.</div>
+    </div>
+    <div class="wi rv rv-d2">
+      <div class="wi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+      <div class="wi-nm">Multiple Materials & Finishes</div>
+      <div class="wi-ds">From matte ceramics to polished porcelain, stone-look vitrified to wooden-look planks — the right surface for every vision.</div>
+    </div>
+    <div class="wi rv">
+      <div class="wi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <div class="wi-nm">Designed for Every Space</div>
+      <div class="wi-ds">Whether it's the intimacy of a bedroom or the demands of an outdoor terrace, there is a tile in our collection built precisely for it.</div>
+    </div>
+    <div class="wi rv rv-d1">
+      <div class="wi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+      <div class="wi-nm">Personalized Quotations</div>
+      <div class="wi-ds">We provide tailored quotations based on your specific requirements — room dimensions, tile selection and finish preferences.</div>
+    </div>
+    <div class="wi rv rv-d2">
+      <div class="wi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+      <div class="wi-nm">In-Person Showroom</div>
+      <div class="wi-ds">Visit our showroom in Ettayapuram to see, feel and compare tiles in a real architectural environment before making your decision.</div>
+    </div>
+  </div>
+</section>
+
+<!-- INSPIRATION GALLERY -->
+<section id="inspo">
+  <div class="ip-hdr">
+    <p class="eyebrow eyebrow--light rv">INSPIRATION</p>
+    <h2 class="headline rv rv-d1">Imagine it in your space.</h2>
+    <div class="ip-filt" id="ip-filt">
+      <button class="ipf on" data-cat="all">All</button>
+      <button class="ipf" data-cat="living">Living</button>
+      <button class="ipf" data-cat="kitchen">Kitchen</button>
+      <button class="ipf" data-cat="bathroom">Bathroom</button>
+      <button class="ipf" data-cat="bedroom">Bedroom</button>
+      <button class="ipf" data-cat="outdoor">Outdoor</button>
+      <button class="ipf" data-cat="exterior">Exterior</button>
+    </div>
+  </div>
+  <div class="masonry" id="masonry"></div>
+</section>
+
+<!-- SHOWROOM -->
+<section id="showroom">
+  <div class="sr-bg">
+    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=90" alt="SKAVI TILES WORLD Showroom" loading="lazy">
+    <div class="sr-ov">
+      <div class="sr-cnt">
+        <p class="eyebrow eyebrow--light">VISIT US</p>
+        <h2 class="headline" style="color:#fff;font-size:clamp(36px,5vw,64px)">See it. Touch it. Choose it.</h2>
+        <div class="sr-addr">
+          <strong>SKAVI TILES WORLD</strong>
+          <p>Authorized Dealer of KAG Tiles<br>12/9, North Street<br>Ettayapuram – 628902<br>Tamil Nadu, India</p>
+        </div>
+        <div class="sr-ph">8489380008</div>
+        <div class="sr-acts">
+          <a href="tel:8489380008" class="btn-p">Call Now</a>
+          <a href="https://wa.me/918489380008" target="_blank" class="btn-o">WhatsApp</a>
+          <a href="https://maps.google.com/?q=Ettayapuram,Tamil+Nadu,India" target="_blank" class="btn-o">Directions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="map-box">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.0!2d77.9697!3d8.9474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b06ff85d7f8f55b%3A0x0!2sEttayapuram%2C%20Tamil%20Nadu%20628902!5e0!3m2!1sen!2sin!4v1700000000000" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="SKAVI TILES WORLD location"></iframe>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section id="gram">
+  <div class="gram-hdr rv">
+    <p class="eyebrow">FOLLOW ALONG</p>
+    <h2 class="headline">The world of SKAVI.</h2>
+    <div class="gram-handle">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2872A1" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="#2872A1" stroke="none"/></svg>
+      <a href="https://www.instagram.com/skavitiles" target="_blank">@skavitiles</a>
+    </div>
+  </div>
+  <div class="gram-grid" id="gram-grid"></div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="final-cta">
+  <div class="fc-bg"></div>
+  <div class="fc-ov"></div>
+  <div class="fc-wm">SKAVI</div>
+  <div class="fc-cnt">
+    <h2 class="fc-h">Let's find the tile<br>for your space.</h2>
+    <div class="fc-btns">
+      <a href="#collections" class="btn-p">Explore Collections</a>
+      <a href="#qform" class="btn-o">Get Quotation</a>
+      <a href="https://wa.me/918489380008" target="_blank" class="btn-o">WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="ft-in">
+    <div class="ft-top">
+      <div>
+        <div class="ft-wm">SKAVI TILES WORLD</div>
+        <div class="ft-tag">Authorized Dealer of KAG Tiles</div>
+        <div class="ft-addr">
+          12/9, North Street<br>Ettayapuram – 628902<br>Tamil Nadu, India<br><br>
+          <a href="tel:8489380008">8489380008</a><br>
+          <a href="https://www.instagram.com/skavitiles" target="_blank">@skavitiles</a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-ct">Navigate</div>
+        <ul class="ft-lk">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#collections">Collections</a></li>
+          <li><a href="#spaces">Spaces</a></li>
+          <li><a href="#inspo">Inspiration</a></li>
+          <li><a href="#showroom">Showroom</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-ct">Tiles</div>
+        <ul class="ft-lk">
+          <li><a href="#collections">Floor Tiles</a></li>
+          <li><a href="#collections">Wall Tiles</a></li>
+          <li><a href="#collections">Bathroom Tiles</a></li>
+          <li><a href="#collections">Kitchen Tiles</a></li>
+          <li><a href="#collections">Outdoor Tiles</a></li>
+          <li><a href="#collections">Elevation Tiles</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-ct">Connect</div>
+        <ul class="ft-lk">
+          <li><a href="#qform">Get Quotation</a></li>
+          <li><a href="tel:8489380008">Call Us</a></li>
+          <li><a href="https://wa.me/918489380008" target="_blank">WhatsApp</a></li>
+          <li><a href="https://www.instagram.com/skavitiles" target="_blank">Instagram</a></li>
+          <li><a href="#" onclick="activateAdmin();return false;">Admin Panel</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>© 2025 SKAVI TILES WORLD · Ettayapuram, Tamil Nadu</span>
+      <span>Every space starts with a surface.</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- PRODUCT MODAL -->
+<div class="pm-ov" id="pm-ov" onclick="if(event.target===this)closePM()">
+  <div class="pm" id="pm">
+    <div class="pm-gal">
+      <img class="pm-main" id="pm-img" src="" alt="">
+      <div class="pm-close" onclick="closePM()">✕</div>
+    </div>
+    <div class="pm-body">
+      <div class="pm-brand" id="pm-brand"></div>
+      <div class="pm-name" id="pm-name"></div>
+      <div class="pm-specs" id="pm-specs"></div>
+      <div class="pm-desc" id="pm-desc"></div>
+      <div class="pm-price-row">
+        <div class="pm-price" id="pm-price"></div>
+        <span id="pm-avail" class="abd"></span>
+      </div>
+      <button class="pm-add" id="pm-add" onclick="addFromModal()">Add to My Quotation</button>
+    </div>
+  </div>
+</div>
+
+<!-- QUOTATION DRAWER -->
+<div class="qd-ov" id="qd-ov" onclick="closeDrawer()"></div>
+<div class="qd" id="qd">
+  <div class="qd-hdr">
+    <h2>My Quotation</h2>
+    <div class="qd-hcl" onclick="closeDrawer()">✕</div>
+  </div>
+  <div class="qd-items" id="qd-items"></div>
+  <div class="qd-ft">
+    <button class="qd-req" onclick="closeDrawer();document.getElementById('qform').scrollIntoView({behavior:'smooth'})">Request Quotation</button>
+    <button class="qd-cl" onclick="clearQuotation()">Clear All</button>
+  </div>
+</div>
+
+<!-- FLOATING BUTTONS -->
+<div class="q-float">
+  <a class="wa-float" href="https://wa.me/918489380008" target="_blank">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp
+  </a>
+  <button class="q-btn" id="q-float-btn" onclick="openDrawer()">
+    My Quotation <span class="q-cnt" id="q-float-cnt">0</span>
+  </button>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" onclick="if(event.target===this||event.target.classList.contains('lb-cl'))closeLB()">
+  <img id="lb-img" src="" alt="">
+  <div class="lb-cl" onclick="closeLB()">✕</div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><div class="toast-dot"></div><span id="toast-msg"></span></div>
+
+<!-- ADMIN PANEL -->
+<div id="adm">
+
+  <!-- LOGIN SCREEN -->
+  <div class="adm-login-wrap" id="adm-login-wrap">
+    <div class="adm-login-box">
+      <div class="adm-login-logo">SKAVI<span>.</span></div>
+      <div class="adm-login-sub">Admin Panel</div>
+      <div class="adm-login-title">Sign in to continue</div>
+      <div class="adm-lf">
+        <div class="adm-lfg">
+          <label class="adm-lfl">Email Address</label>
+          <input class="adm-lfi" type="email" id="adm-email" placeholder="admin@example.com" autocomplete="email">
+        </div>
+        <div class="adm-lfg">
+          <label class="adm-lfl">Password</label>
+          <input class="adm-lfi" type="password" id="adm-pass" placeholder="••••••••" autocomplete="current-password">
+        </div>
+        <div class="adm-login-err" id="adm-err">Incorrect email or password. Please try again.</div>
+        <button class="adm-login-btn" onclick="doAdminLogin()">Sign In</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN CONTENT (shown after login) -->
+  <div id="adm-content" style="display:none">
+    <div class="adm-nav">
+      <div><h1>SKAVI Admin<small>Content Management</small></h1></div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <span style="font-size:11px;color:rgba(255,255,255,.4)" id="adm-user-label"></span>
+        <button class="adm-logout-btn" onclick="doAdminLogout()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+          Logout
+        </button>
+      </div>
+    </div>
+    <div class="adm-bd">
+      <nav class="adm-sb">
+        <a class="adm-sb-i on" data-sec="products" onclick="admNav(this)">Products</a>
+        <a class="adm-sb-i" data-sec="categories" onclick="admNav(this)">Categories</a>
+        <a class="adm-sb-i" data-sec="enquiries" onclick="admNav(this)">Enquiries</a>
+        <a class="adm-sb-i" data-sec="members" onclick="admNav(this)">Team Members</a>
+        <a class="adm-sb-i" data-sec="settings" onclick="admNav(this)">Settings</a>
+      </nav>
+      <div class="adm-ct">
+        <!-- PRODUCTS -->
+        <div class="adm-sc on" id="adm-products">
+          <h2>Products</h2>
+          <div class="adm-bar"><button class="ab ab-p" onclick="openProdModal()">+ Add Product</button></div>
+          <div style="overflow-x:auto">
+            <table class="adm-tb" id="adm-prod-tb">
+              <thead><tr><th>Image</th><th>Name</th><th>Category</th><th>Size</th><th>Finish</th><th>Availability</th><th>Featured</th><th>Actions</th></tr></thead>
+              <tbody id="adm-prod-body"></tbody>
+            </table>
+          </div>
+        </div>
+        <!-- CATEGORIES -->
+        <div class="adm-sc" id="adm-categories">
+          <h2>Collections</h2>
+          <div class="adm-bar"><button class="ab ab-p" onclick="openCatModal()">+ Add Collection</button></div>
+          <div style="overflow-x:auto">
+            <table class="adm-tb">
+              <thead><tr><th>Image</th><th>Name</th><th>Description</th><th>Order</th><th>Actions</th></tr></thead>
+              <tbody id="adm-cat-body"></tbody>
+            </table>
+          </div>
+        </div>
+        <!-- ENQUIRIES -->
+        <div class="adm-sc" id="adm-enquiries">
+          <h2>Enquiries</h2>
+          <div style="overflow-x:auto">
+            <table class="adm-tb">
+              <thead><tr><th>Ref</th><th>Name</th><th>Phone</th><th>Location</th><th>Tiles</th><th>Date</th></tr></thead>
+              <tbody id="adm-enq-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- MEMBERS -->
+        <div class="adm-sc" id="adm-members">
+          <h2>Team Members</h2>
+          <div class="adm-bar"><button class="ab ab-p" onclick="openMemberModal()">+ Add Member</button></div>
+          <div style="overflow-x:auto">
+            <table class="adm-tb">
+              <thead><tr><th></th><th>Name</th><th>Email</th><th>Role</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="adm-mem-body"></tbody>
+            </table>
+          </div>
+          <p style="margin-top:20px;font-size:12px;color:var(--muted)">* The primary admin account cannot be deleted.</p>
+        </div>
+
+        <!-- SETTINGS -->
+        <div class="adm-sc" id="adm-settings">
+          <h2>Settings</h2>
+          <div style="max-width:520px">
+            <div style="display:flex;flex-direction:column;gap:14px;margin-top:8px">
+              <div class="adm-fg"><label class="adm-fl">Business Name</label><input class="adm-fi" id="s-name" value="SKAVI TILES WORLD"></div>
+              <div class="adm-fg"><label class="adm-fl">WhatsApp Number (with country code)</label><input class="adm-fi" id="s-wa" value="918489380008"></div>
+              <div class="adm-fg"><label class="adm-fl">Phone</label><input class="adm-fi" id="s-ph" value="8489380008"></div>
+              <div class="adm-fg"><label class="adm-fl">Instagram Handle</label><input class="adm-fi" id="s-ig" value="@skavitiles"></div>
+              <div class="adm-fg"><label class="adm-fl">Admin Email</label><input class="adm-fi" id="s-adm-email" value="skavi@gmail.com"></div>
+              <div class="adm-fg"><label class="adm-fl">Admin Password</label><input class="adm-fi" type="password" id="s-adm-pass" placeholder="Change password"></div>
+              <button class="ab ab-p" onclick="saveSettings()" style="width:fit-content">Save Settings</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT MODAL (inside #adm so it's always visible) -->
+  <div class="adm-modal-ov" id="adm-prod-ov">
+    <div class="adm-modal">
+      <h3 id="adm-prod-title">Add Product</h3>
+      <div class="adm-form">
+        <div class="adm-fg"><label class="adm-fl">Product Name</label><input class="adm-fi" id="ap-name" placeholder="e.g. Calacatta Frost"></div>
+        <div class="adm-fg"><label class="adm-fl">Brand</label><input class="adm-fi" id="ap-brand" value="KAG Tiles"></div>
+        <div class="adm-fg"><label class="adm-fl">Category</label><select class="adm-fi" id="ap-cat"></select></div>
+        <div class="adm-fg"><label class="adm-fl">Material</label><input class="adm-fi" id="ap-mat" placeholder="e.g. Vitrified"></div>
+        <div class="adm-fg"><label class="adm-fl">Size</label><input class="adm-fi" id="ap-size" placeholder="e.g. 600×600mm"></div>
+        <div class="adm-fg"><label class="adm-fl">Finish</label><input class="adm-fi" id="ap-fin" placeholder="e.g. Glossy"></div>
+        <div class="adm-fg"><label class="adm-fl">Color</label><input class="adm-fi" id="ap-col" placeholder="e.g. White"></div>
+        <div class="adm-fg"><label class="adm-fl">Application</label><input class="adm-fi" id="ap-app" placeholder="e.g. Floor & Wall"></div>
+        <div class="adm-fg"><label class="adm-fl">SKU</label><input class="adm-fi" id="ap-sku" placeholder="e.g. KAG-CF-6060"></div>
+        <div class="adm-fg"><label class="adm-fl">Availability</label><select class="adm-fi" id="ap-avail"><option>In Stock</option><option>On Order</option><option>Discontinued</option></select></div>
+        <div class="adm-fg"><label class="adm-fl">Price (leave blank = Get Quotation)</label><input class="adm-fi" id="ap-price" placeholder="e.g. ₹85 / sq ft"></div>
+        <div class="adm-fg"><label class="adm-fl">Image URL</label><input class="adm-fi" id="ap-img" placeholder="https://..."></div>
+        <div class="adm-fg full"><label class="adm-fl">Description</label><textarea class="adm-fi" id="ap-desc" rows="3"></textarea></div>
+        <div class="adm-fg"><label class="adm-fl">Featured on Homepage</label><select class="adm-fi" id="ap-feat"><option value="true">Yes</option><option value="false">No</option></select></div>
+        <div class="adm-modal-acts full">
+          <button class="ab ab-o" onclick="closeAdmProdModal()">Cancel</button>
+          <button class="ab ab-p" onclick="saveProd()">Save Product</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORY MODAL (inside #adm) -->
+  <div class="adm-modal-ov" id="adm-cat-ov">
+    <div class="adm-modal" style="max-width:480px">
+      <h3 id="adm-cat-title">Add Collection</h3>
+      <div class="adm-form">
+        <div class="adm-fg full"><label class="adm-fl">Collection Name</label><input class="adm-fi" id="ac-name" placeholder="e.g. Marble Look"></div>
+        <div class="adm-fg full"><label class="adm-fl">Description</label><input class="adm-fi" id="ac-desc" placeholder="Short description"></div>
+        <div class="adm-fg full"><label class="adm-fl">Image URL</label><input class="adm-fi" id="ac-img" placeholder="https://..."></div>
+        <div class="adm-fg full"><label class="adm-fl">Sort Order</label><input class="adm-fi" id="ac-ord" type="number" value="99"></div>
+        <div class="adm-modal-acts full">
+          <button class="ab ab-o" onclick="closeAdmCatModal()">Cancel</button>
+          <button class="ab ab-p" onclick="saveCat()">Save Collection</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MEMBER MODAL (inside #adm) -->
+  <div class="adm-modal-ov" id="adm-mem-ov">
+    <div class="adm-modal" style="max-width:440px">
+      <h3 id="adm-mem-title">Add Team Member</h3>
+      <div class="adm-form">
+        <div class="adm-fg full"><label class="adm-fl">Full Name</label><input class="adm-fi" id="am-name" placeholder="e.g. Ravi Kumar"></div>
+        <div class="adm-fg full"><label class="adm-fl">Email Address</label><input class="adm-fi" id="am-email" type="email" placeholder="member@email.com"></div>
+        <div class="adm-fg full"><label class="adm-fl">Password</label><input class="adm-fi" id="am-pass" type="password" placeholder="Set a strong password"></div>
+        <div class="adm-fg full"><label class="adm-fl">Role</label>
+          <select class="adm-fi" id="am-role">
+            <option value="admin">Admin (full access)</option>
+            <option value="editor">Editor (products & categories only)</option>
+          </select>
+        </div>
+        <div class="adm-fg full"><label class="adm-fl">Status</label>
+          <select class="adm-fi" id="am-status">
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+        </div>
+        <div class="adm-modal-acts full">
+          <button class="ab ab-o" onclick="closeMemberModal()">Cancel</button>
+          <button class="ab ab-p" onclick="saveMember()">Save Member</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+<script>
+/* ═══════════════════════════════════════════
+   DATA MODEL
+═══════════════════════════════════════════ */
+const DEFAULT_CATS = [
+  {id:'floor',name:'Floor Tiles',desc:'Large-format & standard floor tiles for every room',img:'https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=700&q=88',ord:1},
+  {id:'wall',name:'Wall Tiles',desc:'Elegant wall tile solutions for kitchens and bathrooms',img:'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=700&q=88',ord:2},
+  {id:'bathroom',name:'Bathroom Tiles',desc:'Premium bathroom floor and wall tiles',img:'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=700&q=88',ord:3},
+  {id:'kitchen',name:'Kitchen Tiles',desc:'Backsplash and kitchen floor tile collections',img:'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=700&q=88',ord:4},
+  {id:'outdoor',name:'Outdoor Tiles',desc:'Weather-resistant anti-slip outdoor tiles',img:'https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=700&q=88',ord:5},
+  {id:'parking',name:'Parking Tiles',desc:'Heavy-duty premium parking and driveway tiles',img:'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=88',ord:6},
+  {id:'cement',name:'Cement Tiles',desc:'Handcrafted cement tiles for distinctive spaces',img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&q=88',ord:7},
+  {id:'ceramic',name:'Ceramic Tiles',desc:'Classic ceramic tiles in every size and finish',img:'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=700&q=88',ord:8},
+  {id:'elevation',name:'Elevation Tiles',desc:'Architectural facade and elevation tiles',img:'https://images.unsplash.com/photo-1613977257363-707ba9578f43?auto=format&fit=crop&w=700&q=88',ord:9},
+  {id:'exterior',name:'Exterior Tiles',desc:'Durable exterior surface tiles for modern homes',img:'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=700&q=88',ord:10},
+  {id:'marble',name:'Marble Look',desc:'Premium marble-look porcelain and vitrified tiles',img:'https://images.unsplash.com/photo-1615529151169-7b1ff50dc7f2?auto=format&fit=crop&w=700&q=88',ord:11},
+  {id:'wood',name:'Wooden Look',desc:'Warm wood-look ceramic and vitrified plank tiles',img:'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=700&q=88',ord:12},
+  {id:'other',name:'Other',desc:'Speciality and decorative tile collections',img:'https://images.unsplash.com/photo-1617791160505-6f00504e3519?auto=format&fit=crop&w=700&q=88',ord:13}
+];
+
+const DEFAULT_PRODS = [
+  {id:'p1',sku:'KAG-CF-6060',name:'Calacatta Frost',brand:'KAG Tiles',category:'floor',material:'Vitrified',size:'600×600mm',finish:'Glossy',color:'White',application:'Floor & Wall',price:'',priceVisible:false,availability:'In Stock',featured:true,img:'https://images.unsplash.com/photo-1615529151169-7b1ff50dc7f2?auto=format&fit=crop&w=700&h=700&fit=crop&q=90',desc:'Inspired by the timeless Calacatta marble quarries, with delicate grey veining on a warm white base. A statement tile for living rooms and premium bathrooms.'},
+  {id:'p2',sku:'KAG-NW-8020',name:'Nordic Walnut',brand:'KAG Tiles',category:'floor',material:'Ceramic',size:'800×200mm',finish:'Matt',color:'Warm Brown',application:'Floor',price:'',priceVisible:false,availability:'In Stock',featured:true,img:'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=700&h=700&fit=crop&q=90',desc:'Warm wood-look tiles that bring the natural character of Nordic walnut into any space. The ideal choice for bedrooms and living areas seeking warmth.'},
+  {id:'p3',sku:'KAG-SM-3060',name:'Slate Metro',brand:'KAG Tiles',category:'wall',material:'Ceramic',size:'300×600mm',finish:'Satin',color:'Charcoal',application:'Wall',price:'',priceVisible:false,availability:'In Stock',featured:true,img:'https://images.unsplash.com/photo-1617791160505-6f00504e3519?auto=format&fit=crop&w=700&h=700&fit=crop&q=90',desc:'Inspired by natural slate, with a subtle textured surface and a refined satin finish. A versatile wall tile that brings depth to kitchen and bathroom walls.'},
+  {id:'p4',sku:'KAG-CR-6030',name:'Carrara Rift',brand:'KAG Tiles',category:'bathroom',material:'Porcelain',size:'600×300mm',finish:'Polished',color:'White',application:'Wall & Floor',price:'',priceVisible:false,availability:'In Stock',featured:true,img:'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=700&q=88',desc:'Refined marble-look porcelain with subtle linear veining. The polished finish creates beautiful reflections and a spa-like quality in any bathroom.'},
+  {id:'p5',sku:'KAG-SB-6060',name:'Storm Black',brand:'KAG Tiles',category:'floor',material:'Porcelain',size:'600×600mm',finish:'Matt',color:'Black',application:'Floor',price:'',priceVisible:false,availability:'On Order',featured:true,img:'https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=700&h=700&fit=crop&q=90',desc:'A bold contemporary tile with deep, rich tones and subtle surface variation. Storm Black creates striking contrast in modern interiors.'},
+  {id:'p6',sku:'KAG-TP-4040',name:'Terra Pebble',brand:'KAG Tiles',category:'outdoor',material:'Vitrified',size:'400×400mm',finish:'Anti-Slip',color:'Stone',application:'Outdoor',price:'',priceVisible:false,availability:'In Stock',featured:false,img:'https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=700&h=700&fit=crop&q=90',desc:'Durable outdoor tile with a natural anti-slip surface, inspired by pebble stone. Weather-resistant and perfect for terraces, pool surrounds and pathways.'},
+  {id:'p7',sku:'KAG-LS-8040',name:'Linen Stone',brand:'KAG Tiles',category:'wall',material:'Ceramic',size:'800×400mm',finish:'Matt',color:'Beige',application:'Wall',price:'',priceVisible:false,availability:'In Stock',featured:false,img:'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=700&h=700&fit=crop&q=90',desc:'A refined textured tile with a linen-inspired surface in soft warm beige. Creates natural texture on feature walls and kitchen splashbacks.'},
+  {id:'p8',sku:'KAG-EP-6030',name:'Elevation Prime',brand:'KAG Tiles',category:'elevation',material:'Ceramic',size:'600×300mm',finish:'Natural',color:'Slate Grey',application:'Exterior',price:'',priceVisible:false,availability:'In Stock',featured:false,img:'https://images.unsplash.com/photo-1613977257363-707ba9578f43?auto=format&fit=crop&w=700&h=700&fit=crop&q=90',desc:'Designed for exterior elevations and modern facades. Weather-resistant with an architectural aesthetic that defines the identity of a home from the street.'},
+  {id:'p9',sku:'KAG-MH-8080',name:'Marble Heights',brand:'KAG Tiles',category:'marble',material:'Vitrified',size:'800×800mm',finish:'Glossy',color:'Ivory',application:'Floor & Wall',price:'',priceVisible:false,availability:'In Stock',featured:false,img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&h=700&fit=crop&q=90',desc:'Large-format premium marble-look vitrified tile with dramatic veining and a mirror-like gloss. Makes every room feel like a grand architectural statement.'},
+  {id:'p10',sku:'KAG-PK-6060',name:'Parking Stone',brand:'KAG Tiles',category:'parking',material:'Vitrified',size:'600×600mm',finish:'Rough Anti-Slip',color:'Grey',application:'Parking & Outdoor',price:'',priceVisible:false,availability:'In Stock',featured:false,img:'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&h=700&fit=crop&q=90',desc:'Heavy-duty parking and driveway tile with an aggressive anti-slip texture. Built for traffic loads while maintaining a clean, architectural appearance.'}
+];
+
+const INSPO_IMGS = [
+  {src:'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=88',cat:'living',label:'Living Room'},
+  {src:'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=600&q=88',cat:'kitchen',label:'Kitchen'},
+  {src:'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=600&q=88',cat:'bathroom',label:'Bathroom'},
+  {src:'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=600&q=88',cat:'bedroom',label:'Bedroom'},
+  {src:'https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=600&q=88',cat:'outdoor',label:'Outdoor'},
+  {src:'https://images.unsplash.com/photo-1613977257363-707ba9578f43?auto=format&fit=crop&w=600&q=88',cat:'exterior',label:'Exterior'},
+  {src:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=88',cat:'living',label:'Living Room'},
+  {src:'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=88',cat:'exterior',label:'Entry'},
+  {src:'https://images.unsplash.com/photo-1615529151169-7b1ff50dc7f2?auto=format&fit=crop&w=600&q=88',cat:'bathroom',label:'Bathroom'},
+  {src:'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=600&q=88',cat:'bathroom',label:'Bathroom'},
+  {src:'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=600&q=88',cat:'living',label:'Living Room'},
+  {src:'https://images.unsplash.com/photo-1617791160505-6f00504e3519?auto=format&fit=crop&w=600&q=88',cat:'exterior',label:'Surface Detail'},
+  {src:'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=88',cat:'bedroom',label:'Bedroom'},
+  {src:'https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=600&q=88',cat:'living',label:'Living Room'},
+  {src:'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=600&q=88',cat:'exterior',label:'Exterior'}
+];
+
+const VIZ_TILES = {
+  bathroom:[
+    {id:'b0',name:'Calacatta White',img:'https://images.unsplash.com/photo-1615529151169-7b1ff50dc7f2?auto=format&fit=crop&w=300&q=90'},
+    {id:'b1',name:'Dark Slate',img:'https://images.unsplash.com/photo-1617791160505-6f00504e3519?auto=format&fit=crop&w=300&q=90'},
+    {id:'b2',name:'Stone Beige',img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=300&q=90'},
+    {id:'b3',name:'Clean White',img:'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=300&q=90'}
+  ],
+  living:[
+    {id:'l0',name:'Ivory Marble',img:'https://images.unsplash.com/photo-1615529151169-7b1ff50dc7f2?auto=format&fit=crop&w=300&q=90'},
+    {id:'l1',name:'Warm Wood',img:'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=300&q=90'},
+    {id:'l2',name:'Stone Grey',img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=300&q=90'},
+    {id:'l3',name:'Slate Black',img:'https://images.unsplash.com/photo-1617791160505-6f00504e3519?auto=format&fit=crop&w=300&q=90'}
+  ]
+};
+
+const GRAM_IMGS = [
+  'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=500&q=88',
+  'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=500&q=88',
+  'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=500&q=88',
+  'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=500&q=88',
+  'https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=500&q=88',
+  'https://images.unsplash.com/photo-1613977257363-707ba9578f43?auto=format&fit=crop&w=500&q=88'
+];
+
+/* ═══════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════ */
+let cats = JSON.parse(localStorage.getItem('skavi_cats')||'null') || DEFAULT_CATS;
+let prods = JSON.parse(localStorage.getItem('skavi_prods')||'null') || DEFAULT_PRODS;
+let enquiries = JSON.parse(localStorage.getItem('skavi_enq')||'[]');
+let quotation = JSON.parse(localStorage.getItem('skavi_q')||'[]');
+let activeFilt = 'all';
+let vizRoom = 'bathroom';
+let vizTile = 'b0';
+let currentProd = null;
+let editProdId = null;
+let editCatId = null;
+let searchTerm = '';
+let catFilt = 'all';
+
+function save(){localStorage.setItem('skavi_cats',JSON.stringify(cats));localStorage.setItem('skavi_prods',JSON.stringify(prods));}
+function saveQ(){localStorage.setItem('skavi_q',JSON.stringify(quotation));updateQCounts();}
+
+/* ═══════════════════════════════════════════
+   NAV + SCROLL SETUP
+═══════════════════════════════════════════ */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('solid',window.scrollY>40);
+  handleSST();
+},{passive:true});
+
+function toggleMob(){
+  document.getElementById('mob-nav').classList.toggle('open');
+}
+
+/* ═══════════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════════ */
+const rvObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
+},{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
+
+/* ═══════════════════════════════════════════
+   COLLECTIONS RENDER
+═══════════════════════════════════════════ */
+function renderCols(){
+  const g = document.getElementById('col-grid');
+  const sorted = [...cats].sort((a,b)=>a.ord-b.ord);
+  g.innerHTML = sorted.map(c=>`
+    <div class="col-card" onclick="setCatFilter('${c.id}')">
+      <img src="${c.img}" alt="${c.name}" loading="lazy">
+      <div class="col-ov"></div>
+      <div class="col-info">
+        <div class="col-name">${c.name}</div>
+        <div class="col-arrow">Explore collection →</div>
+      </div>
+    </div>`).join('');
+}
+
+function setCatFilter(id){
+  catFilt=id;
+  const fr=document.getElementById('filter-row');
+  fr.querySelectorAll('.fc').forEach(b=>b.classList.toggle('on',b.dataset.cat===id));
+  filterProducts();
+  document.getElementById('discovery').scrollIntoView({behavior:'smooth'});
+}
+
+/* ═══════════════════════════════════════════
+   PRODUCT GRID + FILTER
+═══════════════════════════════════════════ */
+function renderFilterRow(){
+  const fr=document.getElementById('filter-row');
+  fr.innerHTML=`<button class="fc on" data-cat="all" onclick="setCatFilter('all')">All</button>`
+    +cats.sort((a,b)=>a.ord-b.ord).map(c=>`<button class="fc" data-cat="${c.id}" onclick="setCatFilter('${c.id}')">${c.name}</button>`).join('');
+}
+
+function filterProducts(){
+  searchTerm=document.getElementById('search-in').value.toLowerCase().trim();
+  const filtered=prods.filter(p=>{
+    const matchCat=catFilt==='all'||p.category===catFilt;
+    const matchSearch=!searchTerm||
+      p.name.toLowerCase().includes(searchTerm)||
+      p.color.toLowerCase().includes(searchTerm)||
+      p.finish.toLowerCase().includes(searchTerm)||
+      p.material.toLowerCase().includes(searchTerm)||
+      p.size.toLowerCase().includes(searchTerm)||
+      p.category.toLowerCase().includes(searchTerm)||
+      (p.tags||[]).some(t=>t.includes(searchTerm));
+    return matchCat&&matchSearch;
+  });
+  renderProds(filtered);
+  document.getElementById('no-results').style.display=filtered.length?'none':'block';
+}
+
+function renderProds(list){
+  const pg=document.getElementById('prod-grid');
+  if(!list)list=[...prods].filter(p=>true);
+  pg.innerHTML=list.map(p=>{
+    const avCls=p.availability==='In Stock'?'av-in':'av-ord';
+    return `<div class="pc" onclick="openPM('${p.id}')">
+      <div class="pc-img">
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        <span class="pc-avail ${avCls}">${p.availability}</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-brand">${p.brand}</div>
+        <div class="pc-name">${p.name}</div>
+        <div class="pc-meta"><span>${p.size} · ${p.finish}</span><span>${p.material} · ${p.color}</span></div>
+        <div class="pc-foot">
+          <div class="pc-price ${p.price?'':'rq'}">${p.price||'Get Quotation'}</div>
+          <div class="pc-btns">
+            <button class="pc-ab" onclick="event.stopPropagation();addToQ('${p.id}')" title="Add to quotation">+</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ═══════════════════════════════════════════
+   PRODUCT MODAL
+═══════════════════════════════════════════ */
+function openPM(id){
+  const p=prods.find(x=>x.id===id);
+  if(!p)return;
+  currentProd=p;
+  document.getElementById('pm-img').src=p.img;
+  document.getElementById('pm-img').alt=p.name;
+  document.getElementById('pm-brand').textContent=p.brand;
+  document.getElementById('pm-name').textContent=p.name;
+  document.getElementById('pm-desc').textContent=p.desc;
+  const avEl=document.getElementById('pm-avail');
+  avEl.textContent=p.availability;
+  avEl.className='abd '+(p.availability==='In Stock'?'abd-y':'abd-b');
+  const prEl=document.getElementById('pm-price');
+  prEl.textContent=p.price||'Price on Request';
+  prEl.className='pm-price '+(p.price?'':'rq');
+  document.getElementById('pm-specs').innerHTML=[
+    ['SKU',p.sku||'—'],['Material',p.material],
+    ['Size',p.size],['Finish',p.finish],
+    ['Color',p.color],['Application',p.application]
+  ].map(([l,v])=>`<div class="pm-spec"><div class="pm-sl">${l}</div><div class="pm-sv">${v}</div></div>`).join('');
+  const inQ=quotation.some(q=>q.id===id);
+  const addBtn=document.getElementById('pm-add');
+  addBtn.textContent=inQ?'Added to Quotation':'Add to My Quotation';
+  addBtn.className='pm-add'+(inQ?' added':'');
+  document.getElementById('pm-ov').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closePM(){
+  document.getElementById('pm-ov').classList.remove('open');
+  document.body.style.overflow='';
+}
+function addFromModal(){
+  if(!currentProd)return;
+  addToQ(currentProd.id);
+  const btn=document.getElementById('pm-add');
+  btn.textContent='Added to Quotation';btn.className='pm-add added';
+}
+
+/* ═══════════════════════════════════════════
+   QUOTATION
+═══════════════════════════════════════════ */
+function addToQ(id){
+  const p=prods.find(x=>x.id===id);if(!p)return;
+  const ex=quotation.find(q=>q.id===id);
+  if(ex){ex.qty++;} else {quotation.push({id:p.id,name:p.name,brand:p.brand,size:p.size,img:p.img,qty:1});}
+  saveQ();renderDrawer();showToast(`${p.name} added to quotation`);
+}
+function removeFromQ(id){quotation=quotation.filter(q=>q.id!==id);saveQ();renderDrawer();}
+function changeQty(id,delta){
+  const item=quotation.find(q=>q.id===id);
+  if(!item)return;
+  item.qty=Math.max(1,item.qty+delta);
+  saveQ();renderDrawer();
+}
+function clearQuotation(){quotation=[];saveQ();renderDrawer();}
+
+function renderDrawer(){
+  const el=document.getElementById('qd-items');
+  if(!quotation.length){
+    el.innerHTML=`<div class="qd-empty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h4"/></svg>
+      <p>No tiles selected yet.</p></div>`;
+  } else {
+    el.innerHTML=quotation.map(q=>`
+      <div class="qd-item">
+        <img src="${q.img}" alt="${q.name}" loading="lazy">
+        <div><div class="qd-iname">${q.name}</div><div class="qd-imeta">${q.brand} · ${q.size}</div></div>
+        <div style="text-align:right">
+          <div class="qty-ctrl">
+            <div class="qty-b" onclick="changeQty('${q.id}',-1)">−</div>
+            <span class="qty-v">${q.qty}</span>
+            <div class="qty-b" onclick="changeQty('${q.id}',1)">+</div>
+          </div>
+          <span class="qd-rm" onclick="removeFromQ('${q.id}')">Remove</span>
+        </div>
+      </div>`).join('');
+  }
+  updateQFItems();
+}
+
+function updateQCounts(){
+  const count=quotation.reduce((a,q)=>a+q.qty,0);
+  document.getElementById('nav-cnt').textContent=count;
+  document.getElementById('q-float-cnt').textContent=count;
+  const fb=document.getElementById('q-float-btn');
+  fb.classList.toggle('has',count>0);
+}
+function openDrawer(){document.getElementById('qd').classList.add('open');document.getElementById('qd-ov').classList.add('open');}
+function closeDrawer(){document.getElementById('qd').classList.remove('open');document.getElementById('qd-ov').classList.remove('open');}
+function updateQFItems(){
+  const el=document.getElementById('qf-items');
+  if(!quotation.length){el.style.color='rgba(255,255,255,.5)';el.textContent='No tiles selected yet. Add from the collection above.';return;}
+  el.style.color='rgba(255,255,255,.8)';
+  el.innerHTML=quotation.map(q=>`<div style="padding:4px 0;font-size:13px">${q.name} — ${q.size} — Qty: ${q.qty}</div>`).join('');
+}
+
+/* ═══════════════════════════════════════════
+   QUOTATION FORM SUBMIT
+═══════════════════════════════════════════ */
+function submitQuotation(e){
+  e.preventDefault();
+  const name=document.getElementById('q-name').value;
+  const phone=document.getElementById('q-phone').value;
+  const email=document.getElementById('q-email').value;
+  const loc=document.getElementById('q-loc').value;
+  const msg=document.getElementById('q-msg').value;
+  const ref='SKV-'+Date.now().toString().slice(-6);
+  const enq={ref,name,phone,email,loc,msg,tiles:quotation.map(q=>({name:q.name,size:q.size,qty:q.qty})),date:new Date().toISOString()};
+  enquiries.push(enq);
+  localStorage.setItem('skavi_enq',JSON.stringify(enquiries));
+  document.getElementById('qf').style.display='none';
+  const ok=document.getElementById('f-ok');ok.classList.add('on');
+  document.getElementById('f-ref').textContent='Reference: '+ref;
+  // Build WhatsApp message
+  let waMsg=`Hello SKAVI TILES WORLD,\n\nI would like to enquire about the following tiles:\n\n`;
+  quotation.forEach((q,i)=>{waMsg+=`${i+1}. ${q.name} — ${q.size} — Qty: ${q.qty}\n`;});
+  waMsg+=`\nCustomer Name: ${name}\nMobile: ${phone}\nLocation: ${loc||'—'}\n${msg?'\nMessage: '+msg+'\n':''}\nPlease share availability and quotation.\n\nThank you.`;
+  const wa=document.getElementById('f-wa-link');
+  wa.href=`https://wa.me/918489380008?text=${encodeURIComponent(waMsg)}`;
+}
+
+/* ═══════════════════════════════════════════
+   SPACE SCROLL TRANSITION
+═══════════════════════════════════════════ */
+let sstActive=0;
+function handleSST(){
+  const sec=document.getElementById('sst');
+  if(!sec)return;
+  const rect=sec.getBoundingClientRect();
+  const sH=sec.offsetHeight;
+  if(rect.top>window.innerHeight||rect.bottom<0)return;
+  const scrolled=Math.abs(rect.top);
+  const progress=Math.max(0,Math.min(1,scrolled/sH));
+  const idx=Math.min(4,Math.floor(progress*5));
+  if(idx!==sstActive){setSSTPanel(idx);}
+}
+function setSSTPanel(idx){
+  sstActive=idx;
+  document.querySelectorAll('.sst-panel').forEach((p,i)=>p.classList.toggle('act',i===idx));
+  document.querySelectorAll('.sst-dot').forEach((d,i)=>d.classList.toggle('act',i===idx));
+}
+
+/* ═══════════════════════════════════════════
+   TILE VISUALIZER
+═══════════════════════════════════════════ */
+function setVizRoom(room,btn){
+  vizRoom=room;
+  document.querySelectorAll('.viz-sw-btn').forEach(b=>b.classList.remove('act'));
+  btn.classList.add('act');
+  const tiles=VIZ_TILES[room];
+  vizTile=tiles[0].id;
+  renderVizTiles();
+  updateVizRoom();
+}
+function renderVizTiles(){
+  const tiles=VIZ_TILES[vizRoom];
+  document.getElementById('viz-tiles').innerHTML=tiles.map(t=>`
+    <div class="viz-tile ${t.id===vizTile?'sel':''}" onclick="selectVizTile('${t.id}')">
+      <img src="${t.img}" alt="${t.name}" loading="lazy">
+      <div class="viz-tile-nm">${t.name}</div>
+    </div>`).join('');
+}
+function selectVizTile(id){
+  vizTile=id;
+  renderVizTiles();updateVizRoom();
+}
+function updateVizRoom(){
+  document.querySelectorAll('.viz-ri').forEach(el=>{
+    el.classList.toggle('act',el.dataset.room===vizRoom&&el.dataset.tile===vizTile);
+  });
+  const tileData=VIZ_TILES[vizRoom].find(t=>t.id===vizTile);
+  if(tileData)document.getElementById('viz-badge').textContent=tileData.name;
+}
+
+/* ═══════════════════════════════════════════
+   INSPIRATION GALLERY
+═══════════════════════════════════════════ */
+function renderInspo(cat){
+  const list=cat==='all'?INSPO_IMGS:INSPO_IMGS.filter(i=>i.cat===cat);
+  document.getElementById('masonry').innerHTML=list.map(i=>`
+    <div class="mi" onclick="openLB('${i.src.replace("w=500","w=1200")}')">
+      <img src="${i.src}" alt="${i.label}" loading="lazy">
+      <div class="mi-ov"><span class="mi-lb">${i.label}</span></div>
+    </div>`).join('');
+}
+document.getElementById('ip-filt').addEventListener('click',e=>{
+  if(!e.target.dataset.cat)return;
+  document.querySelectorAll('.ipf').forEach(b=>b.classList.remove('on'));
+  e.target.classList.add('on');
+  renderInspo(e.target.dataset.cat);
+});
+
+/* ═══════════════════════════════════════════
+   INSTAGRAM GALLERY
+═══════════════════════════════════════════ */
+function renderGram(){
+  document.getElementById('gram-grid').innerHTML=GRAM_IMGS.map(src=>`
+    <div class="gi" onclick="openLB('${src.replace("w=400","w=1200")}')">
+      <img src="${src}" alt="SKAVI Tiles World" loading="lazy">
+      <div class="gi-ov">
+        <svg class="gi-ic" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg>
+      </div>
+    </div>`).join('');
+}
+
+/* ═══════════════════════════════════════════
+   LIGHTBOX
+═══════════════════════════════════════════ */
+function openLB(src){
+  document.getElementById('lb-img').src=src;
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLB(){document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeLB();closePM();closeDrawer();}
+});
+
+/* ═══════════════════════════════════════════
+   TOAST
+═══════════════════════════════════════════ */
+let toastTO;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toast-msg').textContent=msg;
+  t.classList.add('on');
+  clearTimeout(toastTO);
+  toastTO=setTimeout(()=>t.classList.remove('on'),3000);
+}
+
+/* ═══════════════════════════════════════════
+   ADMIN PANEL
+═══════════════════════════════════════════ */
+/* ═══════════════════════════════════════════
+   ADMIN AUTH
+═══════════════════════════════════════════ */
+const ADMIN_EMAIL = localStorage.getItem('skavi_adm_email') || 'skavi@gmail.com';
+const ADMIN_PASS  = localStorage.getItem('skavi_adm_pass')  || 'Skavi@2025';
+
+function activateAdmin(){
+  document.body.classList.add('adm');
+  // Check if already logged in this session
+  if(sessionStorage.getItem('skavi_adm_auth')==='1'){
+    showAdminContent();
+  }
+  // else show login screen (default state)
+}
+
+function doAdminLogin(){
+  const em = document.getElementById('adm-email').value.trim().toLowerCase();
+  const pw = document.getElementById('adm-pass').value;
+  // Load current members list
+  const allMembers = JSON.parse(localStorage.getItem('skavi_members') || 'null') ||
+    [{id:'m1',name:'SKAVI Admin',email:'skavi@gmail.com',pass:'Skavi@2025',role:'admin',status:'active',primary:true}];
+  const match = allMembers.find(m =>
+    m.email.toLowerCase() === em && m.pass === pw && m.status === 'active'
+  );
+  if(match){
+    sessionStorage.setItem('skavi_adm_auth','1');
+    sessionStorage.setItem('skavi_adm_name', match.name);
+    sessionStorage.setItem('skavi_adm_role', match.role);
+    currentMember = match;
+    showAdminContent();
+  } else {
+    document.getElementById('adm-err').classList.add('on');
+    document.getElementById('adm-pass').value='';
+  }
+}
+
+function showAdminContent(){
+  document.getElementById('adm-login-wrap').style.display='none';
+  document.getElementById('adm-content').style.display='block';
+  const name = sessionStorage.getItem('skavi_adm_name') || 'Admin';
+  const role = sessionStorage.getItem('skavi_adm_role') || 'editor';
+  document.getElementById('adm-user-label').textContent = name + ' (' + role + ')';
+  // Hide Members & Settings tabs for editors
+  if(role !== 'admin'){
+    document.querySelectorAll('[data-sec="members"],[data-sec="settings"]').forEach(el=>{
+      el.style.display='none';
+    });
+  }
+  renderAdm();
+}
+
+function doAdminLogout(){
+  sessionStorage.removeItem('skavi_adm_auth');
+  document.body.classList.remove('adm');
+  window.scrollTo(0,0);
+}
+
+// Allow Enter key on login form
+document.addEventListener('keydown', function(e){
+  if(document.body.classList.contains('adm') && e.key==='Enter'){
+    if(document.getElementById('adm-login-wrap').style.display!=='none'
+      || !document.getElementById('adm-login-wrap').style.display){
+      doAdminLogin();
+    }
+  }
+  // Ctrl+Shift+A to open admin
+  if(e.ctrlKey && e.shiftKey && e.key==='A') activateAdmin();
+});
+
+// Activate on URL param / hash
+if(
+  window.location.search.includes('admin=true') ||
+  window.location.hash.includes('admin')
+){ activateAdmin(); }
+
+function admNav(el){
+  document.querySelectorAll('.adm-sb-i').forEach(i=>i.classList.remove('on'));
+  el.classList.add('on');
+  document.querySelectorAll('.adm-sc').forEach(s=>s.classList.remove('on'));
+  document.getElementById('adm-'+el.dataset.sec).classList.add('on');
+  if(el.dataset.sec==='products')   renderAdmProds();
+  if(el.dataset.sec==='categories') renderAdmCats();
+  if(el.dataset.sec==='enquiries')  renderAdmEnq();
+  if(el.dataset.sec==='members')    renderAdmMembers();
+}
+
+
+/* ═══════════════════════════════════════════
+   TEAM MEMBERS
+═══════════════════════════════════════════ */
+const DEFAULT_MEMBERS = [
+  {id:'m1', name:'SKAVI Admin', email:'skavi@gmail.com', pass:'Skavi@2025', role:'admin', status:'active', primary:true}
+];
+
+let members = JSON.parse(localStorage.getItem('skavi_members') || 'null') || DEFAULT_MEMBERS;
+let editMemberId = null;
+let currentMember = null;
+
+function saveMembers(){ localStorage.setItem('skavi_members', JSON.stringify(members)); }
+
+function getInitials(name){
+  return name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+}
+
+function renderAdmMembers(){
+  const tbody = document.getElementById('adm-mem-body');
+  if(!tbody) return;
+  tbody.innerHTML = members.map(m => `
+    <tr>
+      <td><div class="member-avatar">${getInitials(m.name)}</div></td>
+      <td><strong>${m.name}</strong>${m.primary?'<br><small style="color:var(--muted)">Primary account</small>':''}</td>
+      <td>${m.email}</td>
+      <td><span class="role-badge role-${m.role}">${m.role==='admin'?'Admin':'Editor'}</span></td>
+      <td><span class="abd ${m.status==='active'?'abd-y':'abd-n'}">${m.status==='active'?'Active':'Inactive'}</span></td>
+      <td style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="ab ab-o" data-edit-mem="${m.id}">Edit</button>
+        ${!m.primary ? `<button class="ab ab-d" data-del-mem="${m.id}">Remove</button>` : ''}
+      </td>
+    </tr>`).join('');
+  document.querySelectorAll('[data-edit-mem]').forEach(btn=>{
+    btn.onclick = ()=> openMemberModal(btn.dataset.editMem);
+  });
+  document.querySelectorAll('[data-del-mem]').forEach(btn=>{
+    btn.onclick = ()=> deleteMember(btn.dataset.delMem);
+  });
+}
+
+function openMemberModal(id){
+  editMemberId = id || null;
+  const m = id ? members.find(x=>x.id===id) : null;
+  document.getElementById('adm-mem-title').textContent = m ? 'Edit Member' : 'Add Team Member';
+  document.getElementById('am-name').value   = m?.name  || '';
+  document.getElementById('am-email').value  = m?.email || '';
+  document.getElementById('am-pass').value   = '';
+  document.getElementById('am-pass').placeholder = m ? 'Leave blank to keep existing' : 'Set a strong password';
+  document.getElementById('am-role').value   = m?.role   || 'editor';
+  document.getElementById('am-status').value = m?.status || 'active';
+  document.getElementById('adm-mem-ov').classList.add('open');
+}
+
+function closeMemberModal(){
+  document.getElementById('adm-mem-ov').classList.remove('open');
+}
+
+function saveMember(){
+  const name   = document.getElementById('am-name').value.trim();
+  const email  = document.getElementById('am-email').value.trim();
+  const pass   = document.getElementById('am-pass').value.trim();
+  const role   = document.getElementById('am-role').value;
+  const status = document.getElementById('am-status').value;
+
+  if(!name || !email){ alert('Name and email are required.'); return; }
+  if(!editMemberId && !pass){ alert('Password is required for new members.'); return; }
+
+  // Check duplicate email
+  const duplicate = members.find(m=> m.email===email && m.id!==editMemberId);
+  if(duplicate){ alert('A member with this email already exists.'); return; }
+
+  if(editMemberId){
+    const i = members.findIndex(m=>m.id===editMemberId);
+    if(i>-1){
+      members[i].name   = name;
+      members[i].email  = email;
+      members[i].role   = role;
+      members[i].status = status;
+      if(pass) members[i].pass = pass;
+    }
+  } else {
+    members.push({
+      id: 'm'+Date.now(), name, email, pass, role, status, primary: false
+    });
+  }
+  saveMembers();
+  renderAdmMembers();
+  closeMemberModal();
+  showToast('Member saved successfully');
+}
+
+function deleteMember(id){
+  const m = members.find(x=>x.id===id);
+  if(!m || m.primary){ alert('Primary admin cannot be removed.'); return; }
+  if(!confirm('Remove ' + m.name + ' from admin access?')) return;
+  members = members.filter(x=>x.id!==id);
+  saveMembers();
+  renderAdmMembers();
+  showToast('Member removed');
+}
+
+// Click outside member modal to close
+document.addEventListener('click', function(e){
+  if(e.target.id==='adm-mem-ov') closeMemberModal();
+});
+
+function renderAdm(){renderAdmProds();renderAdmCats();renderAdmEnq();renderAdmMembers();}
+
+function renderAdmProds(){
+  document.getElementById('adm-prod-body').innerHTML=prods.map(p=>`
+    <tr>
+      <td><img src="${p.img}" alt="${p.name}"></td>
+      <td><strong>${p.name}</strong><br><small style="color:#999">${p.sku||''}</small></td>
+      <td><span class="abd abd-b">${cats.find(c=>c.id===p.category)?.name||p.category}</span></td>
+      <td>${p.size}</td><td>${p.finish}</td>
+      <td><span class="abd ${p.availability==='In Stock'?'abd-y':'abd-b'}">${p.availability}</span></td>
+      <td><span class="abd ${p.featured?'abd-y':'abd-n'}">${p.featured?'Yes':'No'}</span></td>
+      <td style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="ab ab-o" data-edit-prod="${p.id}">Edit</button>
+        <button class="ab ab-d" data-del-prod="${p.id}">Delete</button>
+      </td>
+    </tr>`).join('');
+  // Attach events after render
+  document.querySelectorAll('[data-edit-prod]').forEach(btn=>{
+    btn.onclick=()=>openProdModal(btn.dataset.editProd);
+  });
+  document.querySelectorAll('[data-del-prod]').forEach(btn=>{
+    btn.onclick=()=>deleteProd(btn.dataset.delProd);
+  });
+}
+
+function renderAdmCats(){
+  document.getElementById('adm-cat-body').innerHTML=[...cats].sort((a,b)=>a.ord-b.ord).map(c=>`
+    <tr>
+      <td><img src="${c.img}" alt="${c.name}"></td>
+      <td><strong>${c.name}</strong></td><td>${c.desc}</td><td>${c.ord}</td>
+      <td style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="ab ab-o" data-edit-cat="${c.id}">Edit</button>
+        <button class="ab ab-d" data-del-cat="${c.id}">Delete</button>
+      </td>
+    </tr>`).join('');
+  document.querySelectorAll('[data-edit-cat]').forEach(btn=>{
+    btn.onclick=()=>openCatModal(btn.dataset.editCat);
+  });
+  document.querySelectorAll('[data-del-cat]').forEach(btn=>{
+    btn.onclick=()=>deleteCat(btn.dataset.delCat);
+  });
+}
+
+function renderAdmEnq(){
+  document.getElementById('adm-enq-body').innerHTML=enquiries.length?
+    enquiries.slice().reverse().map(e=>`
+      <tr>
+        <td>${e.ref}</td><td>${e.name}</td><td>${e.phone}</td><td>${e.loc||'—'}</td>
+        <td>${e.tiles?e.tiles.map(t=>t.name).join(', '):'—'}</td>
+        <td>${new Date(e.date).toLocaleDateString()}</td>
+      </tr>`).join(''):
+    '<tr><td colspan="6" style="text-align:center;padding:32px;color:#999">No enquiries yet.</td></tr>';
+}
+
+function openProdModal(id){
+  editProdId=id||null;
+  const p=id?prods.find(x=>x.id===id):null;
+  document.getElementById('adm-prod-title').textContent=p?'Edit Product':'Add Product';
+  document.getElementById('ap-name').value=p?.name||'';
+  document.getElementById('ap-brand').value=p?.brand||'KAG Tiles';
+  document.getElementById('ap-mat').value=p?.material||'';
+  document.getElementById('ap-size').value=p?.size||'';
+  document.getElementById('ap-fin').value=p?.finish||'';
+  document.getElementById('ap-col').value=p?.color||'';
+  document.getElementById('ap-app').value=p?.application||'';
+  document.getElementById('ap-sku').value=p?.sku||'';
+  document.getElementById('ap-price').value=p?.price||'';
+  document.getElementById('ap-img').value=p?.img||'';
+  document.getElementById('ap-desc').value=p?.desc||'';
+  document.getElementById('ap-avail').value=p?.availability||'In Stock';
+  document.getElementById('ap-feat').value=p?.featured?'true':'false';
+  const catSel=document.getElementById('ap-cat');
+  catSel.innerHTML=cats.map(c=>`<option value="${c.id}" ${p?.category===c.id?'selected':''}>${c.name}</option>`).join('');
+  document.getElementById('adm-prod-ov').classList.add('open');
+}
+function closeAdmProdModal(){document.getElementById('adm-prod-ov').classList.remove('open');}
+// Click outside modal to close
+document.addEventListener('click',function(e){
+  if(e.target.id==='adm-prod-ov') closeAdmProdModal();
+  if(e.target.id==='adm-cat-ov')  closeAdmCatModal();
+});
+function editProd(id){openProdModal(id);}
+function deleteProd(id){
+  if(!confirm('Delete this product?'))return;
+  prods=prods.filter(p=>p.id!==id);save();renderAdmProds();
+}
+function saveProd(){
+  const data={
+    id:editProdId||'p'+(Date.now()),sku:document.getElementById('ap-sku').value,
+    name:document.getElementById('ap-name').value,brand:document.getElementById('ap-brand').value,
+    category:document.getElementById('ap-cat').value,material:document.getElementById('ap-mat').value,
+    size:document.getElementById('ap-size').value,finish:document.getElementById('ap-fin').value,
+    color:document.getElementById('ap-col').value,application:document.getElementById('ap-app').value,
+    price:document.getElementById('ap-price').value,priceVisible:!!document.getElementById('ap-price').value,
+    availability:document.getElementById('ap-avail').value,
+    featured:document.getElementById('ap-feat').value==='true',
+    img:document.getElementById('ap-img').value||'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&h=700&fit=crop&q=90',
+    desc:document.getElementById('ap-desc').value
+  };
+  if(editProdId){const i=prods.findIndex(p=>p.id===editProdId);if(i>-1)prods[i]=data;}
+  else{prods.push(data);}
+  save();renderAdmProds();closeAdmProdModal();
+}
+
+function openCatModal(id){
+  editCatId=id||null;
+  const c=id?cats.find(x=>x.id===id):null;
+  document.getElementById('adm-cat-title').textContent=c?'Edit Collection':'Add Collection';
+  document.getElementById('ac-name').value=c?.name||'';
+  document.getElementById('ac-desc').value=c?.desc||'';
+  document.getElementById('ac-img').value=c?.img||'';
+  document.getElementById('ac-ord').value=c?.ord||99;
+  document.getElementById('adm-cat-ov').classList.add('open');
+}
+function closeAdmCatModal(){document.getElementById('adm-cat-ov').classList.remove('open');}
+function editCat(id){openCatModal(id);}
+function deleteCat(id){
+  if(!confirm('Delete this collection?'))return;
+  cats=cats.filter(c=>c.id!==id);save();renderAdmCats();
+}
+function saveCat(){
+  const nm=document.getElementById('ac-name').value.trim();if(!nm)return alert('Name required');
+  const data={
+    id:editCatId||(nm.toLowerCase().replace(/\s+/g,'-')+'-'+Date.now()),
+    name:nm,desc:document.getElementById('ac-desc').value,
+    img:document.getElementById('ac-img').value||'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&h=700&fit=crop&q=90',
+    ord:parseInt(document.getElementById('ac-ord').value)||99
+  };
+  if(editCatId){const i=cats.findIndex(c=>c.id===editCatId);if(i>-1)cats[i]=data;}
+  else{cats.push(data);}
+  save();renderAdmCats();closeAdmCatModal();
+}
+function saveSettings(){
+  const newEmail = document.getElementById('s-adm-email').value.trim();
+  const newPass  = document.getElementById('s-adm-pass').value.trim();
+  if(newEmail) localStorage.setItem('skavi_adm_email', newEmail);
+  if(newPass)  localStorage.setItem('skavi_adm_pass', newPass);
+  showToast('Settings saved successfully');
+}
+
+/* ═══════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════ */
+renderCols();
+renderFilterRow();
+renderProds();
+renderDrawer();
+updateQCounts();
+renderVizTiles();
+updateVizRoom();
+renderInspo('all');
+renderGram();
+// Initial scroll panel
+handleSST();
+</script>
+</body>
+</html>
